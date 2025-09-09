@@ -1,0 +1,267 @@
+/* --- Reset global --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f8fafc;
+  color: #1e293b;
+  line-height: 1.5;
+}
+
+/* --- Layout principal --- */
+.nvx-wrapper,
+.contenairSix {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 24px;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* --- Sidebar --- */
+.nvx-side-nav {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+
+.nvx-side-item {
+  all: unset;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 15px;
+  color: #475569;
+  transition: all 0.2s ease-in-out;
+}
+
+.nvx-side-item:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.nvx-side-item.active {
+  background: #e0f2fe;
+  color: #0284c7;
+  font-weight: 600;
+  box-shadow: inset 0 0 0 1px #bae6fd;
+}
+
+/* --- Style des liens & icônes --- */
+.nvx-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #334155; /* gris foncé */
+  text-decoration: none;
+  font-size: 15px;
+  transition: color 0.3s ease;
+}
+
+.nvx-icon {
+  width: 20px;
+  height: 20px;
+  color: #64748b; /* gris clair */
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.nvx-side-item.active .nvx-icon,
+.nvx-link:hover .nvx-icon {
+  color: #2563eb; /* bleu accentué */
+  transform: scale(1.1);
+}
+
+.nvx-side-item.active .nvx-link,
+.nvx-link:hover {
+  color: #2563eb; /* bleu pour le texte */
+}
+
+/* --- Contenu principal --- */
+.nvx-content {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+.nvx-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #0f172a;
+}
+
+/* --- Header de bienvenue (CoursSix) --- */
+.cours-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cours-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 6px;
+}
+
+.cours-header p {
+  font-size: 16px;
+  color: #475569;
+}
+
+/* --- Grille des cours (CoursSix) --- */
+.cours-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 cartes par ligne */
+  gap: 24px;
+  margin: 20px 0;
+}
+
+/* --- Carte de cours modernisée --- */
+.cours-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+}
+
+.cours-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: #3b82f6;
+  box-shadow: 0 15px 30px rgba(59, 130, 246, 0.2);
+}
+
+/* Badge icône circulaire */
+.cours-card h1 {
+  font-size: 36px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #facc15, #f97316); /* jaune-orange */
+  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Titre de la matière */
+.cours-card h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #0f172a;
+}
+
+/* Description */
+.cours-card p {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.5;
+}
+
+/* --- Footer message (CoursSix) --- */
+.cours-footer {
+  margin-top: 30px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  color: #1e293b;
+}
+
+/* --- Bouton retour --- */
+.reset-btn {
+  margin-top: 20px;
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.reset-btn:hover {
+  background: #1e40af;
+  transform: scale(1.05);
+}
+
+/* --- Zone de contenu tab --- */
+.nvx-tab-content {
+  margin-top: 32px;
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+}
+/* --- Icônes Sidebar améliorées --- */
+.nvx-icon {
+  width: 26px;   /* agrandies */
+  height: 26px;
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+  color: #475569;
+  transition: transform 0.22s ease, color 0.22s ease;
+  stroke-width: 2.2; /* traits plus visibles */
+}
+
+/* chaque onglet avec sa couleur */
+.nvx-side-item .nvx-icon { color: #64748b; }
+
+.nvx-side-item[data-key="cours"] .nvx-icon { color: #2563eb; }     /* Bleu */
+.nvx-side-item[data-key="pdf"] .nvx-icon { color: #dc2626; }       /* Rouge */
+.nvx-side-item[data-key="formules"] .nvx-icon { color: #16a34a; }  /* Vert */
+.nvx-side-item[data-key="exercice"] .nvx-icon { color: #f59e0b; }  /* Orange */
+.nvx-side-item[data-key="anciens"] .nvx-icon { color: #7c3aed; }   /* Violet */
+.nvx-side-item[data-key="quiz"] .nvx-icon { color: #14b8a6; }      /* Cyan */
+.nvx-side-item[data-key="video"] .nvx-icon { color: #be123c; }     /* Rouge rosé */
+
+/* Hover + actif : accentuation des couleurs + zoom */
+.nvx-side-item:hover[data-key="cours"] .nvx-icon,
+.nvx-side-item.active[data-key="cours"] .nvx-icon { color: #1d4ed8; transform: scale(1.2); }
+
+.nvx-side-item:hover[data-key="pdf"] .nvx-icon,
+.nvx-side-item.active[data-key="pdf"] .nvx-icon { color: #b91c1c; transform: scale(1.2); }
+
+.nvx-side-item:hover[data-key="formules"] .nvx-icon,
+.nvx-side-item.active[data-key="formules"] .nvx-icon { color: #15803d; transform: scale(1.2); }
+
+.nvx-side-item:hover[data-key="exercice"] .nvx-icon,
+.nvx-side-item.active[data-key="exercice"] .nvx-icon { color: #b45309; transform: scale(1.2); }
+
+.nvx-side-item:hover[data-key="anciens"] .nvx-icon,
+.nvx-side-item.active[data-key="anciens"] .nvx-icon { color: #6d28d9; transform: scale(1.2); }
+
+.nvx-side-item:hover[data-key="quiz"] .nvx-icon,
+.nvx-side-item.active[data-key="quiz"] .nvx-icon { color: #0d9488; transform: scale(1.2); }
+
+.nvx-side-item:hover[data-key="video"] .nvx-icon,
+.nvx-side-item.active[data-key="video"] .nvx-icon { color: #9f1239; transform: scale(1.2); }

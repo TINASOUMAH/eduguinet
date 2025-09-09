@@ -1,0 +1,154 @@
+/* HomeView.css */
+
+/* Section hero avec image */
+.hero-section {
+  position: relative;
+  text-align: center;
+  padding: 5rem 1.5rem;
+  background-image: url("/image/imageaccuiel.png");
+  background-size: cover;
+  background-position: top center;
+
+  min-height: 70vh; /* au moins 70% de la hauteur de l’écran */
+}
+
+
+/* Overlay pour lisibilité du texte */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* voile sombre */
+}
+
+/* Contenu centré */
+.hero-content {
+  position: relative;
+  max-width: 900px;
+  margin: auto;
+  color: white;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.hero-button {
+  background:#1F3A93;   /* bleu */
+  color: white;
+  font-weight: bold;
+  padding: 1rem 2.5rem;
+  border-radius: 9999px;
+  font-size: 1.125rem;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.hero-button:hover {
+  background: #4CAF50;
+  transform: scale(1.05); 
+}
+/* === SECTION NIVEAUX === */
+#level-selection-section {
+  background: #f9fafb;
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+
+#level-selection-section .container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 3rem;
+}
+
+/* Grille des cartes */
+.levels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2.5rem;
+  padding: 2rem 0;
+}
+
+/* Carte individuelle */
+.level-card {
+  background: linear-gradient(145deg, #ffffff, #f9fafb);
+  padding: 2rem;
+  border-radius: 1.5rem; /* coins un peu plus arrondis */
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Effet hover avec glow */
+.level-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Petit dégradé qui apparaît au hover */
+.level-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5rem;
+  background: linear-gradient(135deg, rgba(0, 123, 255, 0.15), rgba(0, 200, 150, 0.15));
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.level-card:hover::after {
+  opacity: 1;
+}
+
+/* Emoji au-dessus du texte */
+.level-card .emoji {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  animation: floatEmoji 3s ease-in-out infinite;
+}
+
+/* Animation douce sur l’emoji */
+@keyframes floatEmoji {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Texte du titre dans la carte */
+.level-card h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1f2937; /* gris foncé */
+  margin-top: 0.5rem;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.level-card:hover h3 {
+  color: #007bff; /* bleu au hover */
+}
+
+/* Animation d’apparition */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-title, .hero-subtitle {
+  animation: fadeIn 1.5s ease-out forwards;
+}

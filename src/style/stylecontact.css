@@ -1,0 +1,95 @@
+/* ===== Section principale ===== */
+.contact-section {
+  text-align: center;
+  padding: 40px 20px;
+  background: #f9fafb;
+  font-family: Arial, sans-serif;
+}
+
+/* ===== Titre ===== */
+.contact-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.contact-subtitle {
+  font-size: 16px;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+/* ===== Grille de cartes ===== */
+.contact-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* ===== Carte ===== */
+.contact-card {
+  background: white;
+  width: 280px;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+}
+
+/* ===== Icônes ===== */
+.icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+/* Couleurs officielles */
+.email-icon {
+  color: rgb(6, 6, 192);
+}
+
+.whatsapp-icon {
+  color: #25D366;
+}
+
+.facebook-icon {
+  color: #1877F2;
+}
+
+/* ===== Boutons ===== */
+.btn-contact {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background:  green;
+  color:white;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.btn-contact:hover {
+  background: rgb(6, 6, 105);
+}
+
+/* ===== Footer ===== */
+.contact-footer {
+  margin-top: 30px;
+  font-size: 14px;
+  color: #666;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .contact-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}
