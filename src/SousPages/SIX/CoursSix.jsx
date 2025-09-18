@@ -5,7 +5,6 @@ import "../../style/styleNiveaux.css";
 function CoursSix() {
   const [page, setPage] = useState(true);
 
-  // Fonction pour réinitialiser la page
   const resetPage = () => {
     setPage(true);
   };
@@ -26,19 +25,24 @@ function CoursSix() {
           {/* Message de bienvenue */}
           <header className="cours-header">
             <h1>Bienvenue en 6ème</h1>
-            <p>👉 Choisis la matière que réviser.</p>
+            <p>👉 Choisis la matière que tu veux réviser.</p>
           </header>
 
           {/* Grille de matières */}
           <div className="cours-grid">
             {items.map((item) => (
-              <Link to={item.slug} key={item.slug} onClick={() => setPage(false)}>
-                <div className="cours-card">
-                  <h1 className="cours-icon">{item.icon}</h1>
-                  <h2>{item.label}</h2>
-                  <p>{item.description}</p>
-                </div>
-              </Link>
+              <div key={item.slug} className="cours-card">
+                <h1 className="cours-icon">{item.icon}</h1>
+                <h2>{item.label}</h2>
+                <p>{item.description}</p>
+
+                {/* Bouton en bas de la carte */}
+                <Link to={item.slug}>
+                  <button className="cours-btn" onClick={() => setPage(false)}>
+                    Acceder
+                  </button>
+                </Link>
+              </div>
             ))}
           </div>
         </>

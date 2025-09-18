@@ -1,6 +1,4 @@
-/* HomeView.css */
-
-/* Section hero avec image */
+/* === SECTION HERO === */
 .hero-section {
   position: relative;
   text-align: center;
@@ -8,20 +6,16 @@
   background-image: url("/image/imageaccuiel.png");
   background-size: cover;
   background-position: top center;
-
-  min-height: 70vh; /* au moins 70% de la hauteur de l’écran */
+  min-height: 70vh;
 }
 
-
-/* Overlay pour lisibilité du texte */
 .hero-section::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4); /* voile sombre */
+  background: rgba(0, 0, 0, 0.4);
 }
 
-/* Contenu centré */
 .hero-content {
   position: relative;
   max-width: 900px;
@@ -33,15 +27,17 @@
   font-size: 2.5rem;
   font-weight: 800;
   margin-bottom: 1rem;
+  animation: fadeIn 1.5s ease-out forwards;
 }
 
 .hero-subtitle {
   font-size: 1.25rem;
   margin-bottom: 2rem;
+  animation: fadeIn 1.5s ease-out forwards;
 }
 
 .hero-button {
-  background:#1F3A93;   /* bleu */
+  background:#1F3A93;   
   color: white;
   font-weight: bold;
   padding: 1rem 2.5rem;
@@ -55,10 +51,103 @@
   background: #4CAF50;
   transform: scale(1.05); 
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === SECTION STATISTIQUES === */
+.stats-section {
+  padding: 3rem 1.5rem;
+
+  position: relative;
+}
+
+.stats-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(97, 96, 96, 0.25);
+  margin-top: 20px;
+}
+
+.stats-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+.stats-section .section-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.stats-section .section-subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.stat-card {
+  padding: 2rem 1rem;
+  border-radius: 1.25rem;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.stat-card h2 {
+  font-size: 2.4rem;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+}
+
+.stat-card p {
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.purple { background: rgba(128, 90, 213, 0.9); }
+.orange { background: rgba(249, 115, 22, 0.9); }
+.yellow { background: rgba(234, 179, 8, 0.9); }
+.blue   { background: rgba(14, 165, 233, 0.9); }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 /* === SECTION NIVEAUX === */
 #level-selection-section {
   background: #f9fafb;
-  padding: 4rem 1.5rem;
+  padding: 3rem 1.5rem;
   text-align: center;
 }
 
@@ -71,84 +160,147 @@
   font-size: 2rem;
   font-weight: 700;
   color: #1f2937;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
-/* Grille des cartes */
+/* Grille des cartes de niveaux */
 .levels {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2.5rem;
-  padding: 2rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  padding: 1rem 0;
 }
 
-/* Carte individuelle */
+/* Carte individuelle améliorée */
 .level-card {
-  background: linear-gradient(145deg, #ffffff, #f9fafb);
-  padding: 2rem;
-  border-radius: 1.5rem; /* coins un peu plus arrondis */
+  background: linear-gradient(135deg, #ffffff, #f1f5f9);
+  padding: 2rem 1.5rem;
+  border-radius: 1.8rem;
   text-align: center;
   cursor: pointer;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
   position: relative;
   overflow: hidden;
 }
 
-/* Effet hover avec glow */
 .level-card:hover {
   transform: translateY(-8px) scale(1.05);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #ffffff, #e0f2fe);
 }
 
-/* Petit dégradé qui apparaît au hover */
-.level-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 1.5rem;
-  background: linear-gradient(135deg, rgba(0, 123, 255, 0.15), rgba(0, 200, 150, 0.15));
-  opacity: 0;
-  transition: opacity 0.35s ease;
-}
-
-.level-card:hover::after {
-  opacity: 1;
-}
-
-/* Emoji au-dessus du texte */
 .level-card .emoji {
   font-size: 3.5rem;
   margin-bottom: 1rem;
   animation: floatEmoji 3s ease-in-out infinite;
 }
 
-/* Animation douce sur l’emoji */
 @keyframes floatEmoji {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  50% { transform: translateY(-6px); }
 }
 
-/* Texte du titre dans la carte */
 .level-card h3 {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  color: #1f2937; /* gris foncé */
+  color: #1f2937;
   margin-top: 0.5rem;
   letter-spacing: 0.5px;
   transition: color 0.3s ease;
 }
 
 .level-card:hover h3 {
-  color: #007bff; /* bleu au hover */
+  color: #0d6efd;
 }
 
-/* Animation d’apparition */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+.level-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 1.8rem;
+  background: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
 }
 
-.hero-title, .hero-subtitle {
-  animation: fadeIn 1.5s ease-out forwards;
+/* === SECTION RESSOURCES === */
+.resources-section {
+  text-align: center;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  max-width: 1000px;                   
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 1.5rem;                 
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1); 
+  position: relative;
+  top: -60px;
+  z-index: 2;                              
+}
+
+.resources-section .section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #111827;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.resources-section .section-subtitle {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #6b7280;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.5;
+}
+
+.resource-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+  padding: 1rem 0;
+}
+
+.resource-card {
+  background: linear-gradient(145deg, #ffffff, #f0f4f8);
+  padding: 1.5rem 1rem;
+  border-radius: 1.2rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  cursor: default;
+  position: relative;
+}
+
+.resource-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.resource-icon {
+  font-size: 2.5rem;
+  color: #1F3A93;
+  margin-bottom: 0.75rem;
+  transition: transform 0.35s ease, color 0.35s ease;
+}
+
+.resource-card:hover .resource-icon {
+  transform: scale(1.15);
+  color: #4CAF50;
+}
+
+.resource-card h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.resource-card p {
+  font-size: 0.95rem;
+  line-height: 1.4;
 }

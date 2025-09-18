@@ -36,7 +36,7 @@ const chapitresHistoire6 = [
 
 export default function Histoire() {
   const [activeChapitre, setActiveChapitre] = useState(chapitresHistoire6[0]);
-  const imageMatiere = "/image/histoire.jpg"; // image principale
+  const imageMatiere = "/image/historess.jpg"; // image principale
 
   return (
     <div style={{ width: "90%", margin: "0 auto" }}>

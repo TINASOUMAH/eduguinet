@@ -22,12 +22,18 @@ const chapitresScience6 = [
   },
   {
     id: 4,
+    title: "Le développement et la reproduction des êtres vivants",
+    contenu: "Étude des cycles de vie, reproduction sexuée et asexuée, et croissance des êtres vivants.",
+    color: "#fde9a6",
+  },
+  {
+    id: 5,
     title: "La matière",
     contenu: "États de la matière, changements d’état et propriétés des matériaux.",
     color: "#dbeafe",
   },
   {
-    id: 5,
+    id: 6,
     title: "La Terre et l’environnement",
     contenu: "Phénomènes naturels, protection de l’environnement et ressources naturelles.",
     color: "#fcd5ce",
@@ -55,7 +61,14 @@ export default function Science() {
       </div>
 
       {/* Liste des chapitres en cartes colorées */}
-      <h3 style={{ marginBottom: "15px", color: "#334155", fontWeight: "600", textAlign: "center" }}>
+      <h3
+        style={{
+          marginBottom: "15px",
+          color: "#334155",
+          fontWeight: "600",
+          textAlign: "center",
+        }}
+      >
         Choisis le chapitre que tu veux réviser...
       </h3>
       <div
@@ -74,10 +87,14 @@ export default function Science() {
               padding: "20px",
               borderRadius: "12px",
               backgroundColor: chap.color,
-              border: chap.id === activeChapitre?.id ? "2px solid #3b82f6" : "1px solid #e5e7eb",
-              boxShadow: chap.id === activeChapitre?.id 
-                ? "0 6px 15px rgba(59,130,246,0.3)" 
-                : "0 4px 10px rgba(0,0,0,0.05)",
+              border:
+                chap.id === activeChapitre?.id
+                  ? "2px solid #3b82f6"
+                  : "1px solid #e5e7eb",
+              boxShadow:
+                chap.id === activeChapitre?.id
+                  ? "0 6px 15px rgba(59,130,246,0.3)"
+                  : "0 4px 10px rgba(0,0,0,0.05)",
               transition: "all 0.3s ease",
             }}
             onMouseEnter={(e) =>
@@ -87,10 +104,22 @@ export default function Science() {
               (e.currentTarget.style.transform = "translateY(0) scale(1)")
             }
           >
-            <h4 style={{ fontSize: "13px", color: "#64748b", marginBottom: "6px" }}>
+            <h4
+              style={{
+                fontSize: "13px",
+                color: "#64748b",
+                marginBottom: "6px",
+              }}
+            >
               CHAPITRE {chap.id}
             </h4>
-            <h3 style={{ fontSize: "18px", fontWeight: "600", color: "#0f172a" }}>
+            <h3
+              style={{
+                fontSize: "18px",
+                fontWeight: "600",
+                color: "#0f172a",
+              }}
+            >
               {chap.title}
             </h3>
           </div>

@@ -1,152 +1,76 @@
 import React, { useState, useEffect } from "react";
+import { Document, Page, pdfjs } from "react-pdf";
+
+import 'react-pdf/dist/Page/AnnotationLayer.css';
+import 'react-pdf/dist/Page/TextLayer.css';
+
+// Configuration du worker (à faire une seule fois, par exemple dans votre App.js)
+pdfjs.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.js', import.meta.url).toString();
 
 const chapitres = [
-  { id: 1, title: "Nombres entiers et décimaux", txtFile: "/uploads/text/six/1.txt", color: "#fef3c7" },
-  { id: 2, title: "Comparaison des nombres decimaux", txtFile: "/uploads/text/six/2.txt", color: "#fde2e2" },
-  { id: 3, title: "Addition et soustraction", txtFile: "/uploads/text/six/3.txt", color: "#d1fae5" },
-  { id: 4, title: "Multiplication et division", txtFile: "/uploads/text/six/4.txt", color: "#dbeafe" },
-  { id: 5, title: "Fractions", txtFile: "/uploads/text/six/5.txt", color: "#fcd5ce" },
-  { id: 6, title: "Proportionnalité", txtFile: "/uploads/text/six/6.txt", color: "#e0f2fe" },
-  { id: 7, title: "Espace et géométrie", txtFile: "/uploads/text/six/7.txt", color: "#fde68a" },
-  { id: 8, title: "Grandeurs et mesures", txtFile: "/uploads/text/six/8.txt", color: "#c7d2fe" },
-  { id: 9, title: "Nombres décimaux relatifs", txtFile: "/uploads/text/six/9.txt", color: "#fbcfe8" },
+  { id: 1, title: "Nombres entiers et décimaux", pdfFile: "/upload/pdfs/1.pdf", color: "#fef3c7" },
+  { id: 2, title: "Comparaison des nombres décimaux", pdfFile: "/upload/pdfs/2.pdf", color: "#fde2e2" },
+  { id: 3, title: "Addition et soustraction", pdfFile: "/upload/pdfs/3.pdf", color: "#d1fae5" },
+  { id: 4, title: "Multiplication et division", pdfFile: "/upload/pdfs/4.pdf", color: "#dbeafe" },
+  { id: 5, title: "Fractions", pdfFile: "/upload/pdfs/5.pdf", color: "#fcd5ce" },
+  { id: 6, title: "Proportionnalité", pdfFile: "/upload/pdfs/6.pdf", color: "#e0f2fe" },
+  { id: 7, title: "Espace et géométrie", pdfFile: "/upload/pdfs/7.pdf", color: "#fde68a" },
+  { id: 8, title: "Grandeurs et mesures", pdfFile: "/upload/pdfs/8.pdf", color: "#c7d2fe" },
+  { id: 9, title: "Nombres décimaux relatifs", pdfFile: "/upload/pdfs/9.pdf", color: "#fbcfe8" },
 ];
 
-export default function ChapitresComponent() {
+export default function ChapitresPDF() {
   const [activeChapitre, setActiveChapitre] = useState(null);
-  const [chapContent, setChapContent] = useState("");
+  const [numPages, setNumPages] = useState(null);
+  const [page, setPage] = useState(1);
+  const [pageWidth, setPageWidth] = useState(800); // largeur du PDF
   const imageMatiere = "/image/sdfgh.jpg";
 
+  // Mettre à jour la largeur du PDF quand la fenêtre change
   useEffect(() => {
-    if (activeChapitre) {
-      fetch(activeChapitre.txtFile)
-        .then((res) => res.text())
-        .then((text) => setChapContent(text))
-        .catch(() => setChapContent("❌ Impossible de charger le contenu."));
-    }
-  }, [activeChapitre]);
+    const handleResize = () => setPageWidth(Math.min(800, window.innerWidth * 0.9));
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-  // 🔹 Fonction pour structurer le contenu
-  const renderContent = (text) => {
-    const lines = text.split("\n");
-    return lines.map((line, index) => {
-      const trimmed = line.trim();
-      if (!trimmed) return <div key={index} style={{ marginBottom: "12px" }} />;
+  const onDocumentLoadSuccess = ({ numPages }) => {
+    setNumPages(numPages);
+    setPage(1);
+  };
 
-      // TITRES PRINCIPAUX
-      if (/^(I+|V+|X+)\s/.test(trimmed) || /^[A-ZÉÈÊÎÔÛÄÖÜÏ\s]{5,}$/.test(trimmed)) {
-        return (
-          <h2
-            key={index}
-            style={{
-              color: "#1e40af",
-              fontSize: "22px",
-              marginTop: "25px",
-              marginBottom: "12px",
-              borderBottom: "2px solid #2563eb",
-              display: "inline-block",
-              paddingBottom: "3px",
-              width: "100%",
-            }}
-          >
-            {trimmed}
-          </h2>
-        );
-      }
+  const onDocumentLoadError = (error) => {
+    console.error("Erreur de chargement du PDF:", error);
+  };
 
-      // SOUS-TITRES
-      if (/^[0-9]+[-.)]\s/.test(trimmed) || /^[A-Z]-\s/.test(trimmed)) {
-        return (
-          <h3
-            key={index}
-            style={{
-              color: "#1e3a8a",
-              fontSize: "18px",
-              marginTop: "18px",
-              marginBottom: "10px",
-              borderBottom: "1px solid #93c5fd",
-              paddingBottom: "2px",
-            }}
-          >
-            {trimmed}
-          </h3>
-        );
-      }
-
-      // LISTES
-      if (trimmed.startsWith("-") || trimmed.startsWith("*")) {
-        return (
-          <li key={index} style={{ marginLeft: "25px", color: "#374151", lineHeight: "1.8" }}>
-            {trimmed.replace(/^[-*]\s*/, "")}
-          </li>
-        );
-      }
-
-      // CALCULS / DÉCOMPOSITIONS → monospace sur une seule ligne
-      if (/=/.test(trimmed) || /×/.test(trimmed) || /,/.test(trimmed)) {
-        return (
-          <pre
-            key={index}
-            style={{
-              marginBottom: "12px",
-              lineHeight: "1.8",
-              fontFamily: "monospace",
-              fontSize: "16px",
-              color: "#111827",
-              whiteSpace: "pre-wrap",
-              wordWrap: "break-word",
-            }}
-          >
-            {trimmed}
-          </pre>
-        );
-      }
-
-      // PARAGRAPHES NORMAUX
-      return (
-        <p
-          key={index}
-          style={{
-            marginBottom: "14px",
-            textAlign: "justify",
-            lineHeight: "1.9",
-            fontSize: "16px",
-            color: "#374151",
-            width: "100%",
-          }}
-        >
-          {trimmed}
-        </p>
-      );
-    });
+  // Résout correctement une ressource du dossier public, en tenant compte de BASE_URL
+  const resolvePublicUrl = (path) => {
+    const base = import.meta.env.BASE_URL || '/';
+    const normalized = path.startsWith('/') ? path.slice(1) : path;
+    return `${base}${normalized}`;
   };
 
   return (
     <div style={{ width: "95%", maxWidth: "1000px", margin: "0 auto" }}>
-      {/* Image */}
+      {/* Image principale */}
       <div style={{ marginBottom: "20px" }}>
         <img
           src={imageMatiere}
           alt="Image matière"
-          style={{
-            width: "100%",
-            height: "400px",
-            objectFit: "cover",
-            borderRadius: "12px",
-          }}
+          style={{ width: "100%", height: "400px", objectFit: "cover", borderRadius: "12px" }}
         />
       </div>
 
-      {/* Liste chapitres */}
+      {/* Liste des chapitres */}
       {!activeChapitre && (
         <>
-          <h3 style={{ marginBottom: "15px", color: "#334155", fontWeight: "600" }}>
+          <h3 style={{ marginBottom: "15px", color: "#334155", fontWeight: "600", textAlign: "center" }}>
             Choisis le chapitre que tu veux réviser...
           </h3>
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+              gridTemplateColumns: "repeat(3, 1fr)",
               gap: "20px",
             }}
           >
@@ -162,63 +86,69 @@ export default function ChapitresComponent() {
                   border: "1px solid #e5e7eb",
                   boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
                   transition: "all 0.3s ease",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  minHeight: "150px",
+                  textAlign: "center",
                 }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.transform = "translateY(-4px) scale(1.02)")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.transform = "translateY(0) scale(1)")
-                }
+                onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-4px) scale(1.02)")}
+                onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0) scale(1)")}
               >
-                <h4 style={{ fontSize: "13px", color: "#64748b", marginBottom: "6px" }}>
-                  CHAPITRE {chap.id}
-                </h4>
-                <h3 style={{ fontSize: "18px", fontWeight: "600", color: "#0f172a" }}>
-                  {chap.title}
-                </h3>
+                <h4 style={{ marginBottom: "10px" }}>CHAPITRE {chap.id}</h4>
+                <h3 style={{ fontSize: "18px", fontWeight: "600" }}>{chap.title}</h3>
               </div>
             ))}
           </div>
         </>
       )}
 
-      {/* Contenu du chapitre */}
+      {/* Affichage du PDF */}
       {activeChapitre && (
         <div
           style={{
             marginTop: "30px",
-            padding: "30px",
+            padding: "20px",
             background: "#ffffff",
             borderRadius: "12px",
             border: "1px solid #e5e7eb",
             boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
             width: "100%",
+            textAlign: "center",
           }}
         >
-          <h1
-            style={{
-              marginBottom: "25px",
-              color: "#2563eb",
-              fontSize: "26px",
-              fontWeight: "700",
-              textDecoration: "underline",
-              textAlign: "center",
-            }}
-          >
+          <h1 style={{ marginBottom: "20px", color: "#2563eb", fontSize: "26px", fontWeight: "700", textDecoration: "underline" }}>
             {activeChapitre.title}
           </h1>
 
-          <div
-            style={{
-              fontSize: "17px",
-              color: "#374151",
-              textAlign: "justify",
-              lineHeight: "1.9",
-              width: "100%",
-            }}
-          >
-            {renderContent(chapContent)}
+          {/* Conteneur scrollable pour PDF */}
+          <div style={{ width: "100%", height: "80vh", overflow: "auto", border: "1px solid #e5e7eb", padding: "10px" }}>
+            <Document
+              key={activeChapitre?.id}
+              file={activeChapitre ? resolvePublicUrl(activeChapitre.pdfFile) : null}
+              onLoadSuccess={onDocumentLoadSuccess}
+              onLoadError={onDocumentLoadError}
+              loading="Chargement du PDF..."
+              error={<div>Impossible de charger le PDF. Assurez-vous que le fichier existe: {activeChapitre ? activeChapitre.pdfFile : ''}</div>}
+            >
+              <Page pageNumber={page} width={pageWidth} />
+            </Document>
           </div>
+
+          {/* Pagination */}
+          {numPages && numPages > 1 && (
+            <div style={{ marginTop: "20px", display: "flex", justifyContent: "center", gap: "10px" }}>
+              <button onClick={() => setPage((p) => Math.max(1, p - 1))} disabled={page === 1}>
+                ← Page précédente
+              </button>
+              <span>
+                Page {page} / {numPages}
+              </span>
+              <button onClick={() => setPage((p) => Math.min(numPages, p + 1))} disabled={page === numPages}>
+                Page suivante →
+              </button>
+            </div>
+          )}
 
           {/* Bouton retour */}
           <button

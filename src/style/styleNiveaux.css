@@ -69,28 +69,18 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #334155; /* gris foncé */
+  color: #334155;
   text-decoration: none;
   font-size: 15px;
   transition: color 0.3s ease;
 }
 
 .nvx-icon {
-  width: 20px;
-  height: 20px;
-  color: #64748b; /* gris clair */
-  transition: transform 0.2s ease, color 0.3s ease;
-}
-
-.nvx-side-item.active .nvx-icon,
-.nvx-link:hover .nvx-icon {
-  color: #2563eb; /* bleu accentué */
-  transform: scale(1.1);
-}
-
-.nvx-side-item.active .nvx-link,
-.nvx-link:hover {
-  color: #2563eb; /* bleu pour le texte */
+  width: 26px;
+  height: 26px;
+  color: #64748b;
+  transition: transform 0.22s ease, color 0.22s ease;
+  stroke-width: 2.2;
 }
 
 /* --- Contenu principal --- */
@@ -101,6 +91,13 @@ body {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
 }
 
+/* --- Wrapper pour les cours --- */
+.cours-wrapper {
+  background: #f8fafc;
+  min-height: 100vh;
+  padding: 40px;
+}
+
 .nvx-title {
   font-size: 26px;
   font-weight: 700;
@@ -108,7 +105,7 @@ body {
   color: #0f172a;
 }
 
-/* --- Header de bienvenue (CoursSix) --- */
+/* --- Header de bienvenue (CoursSix/Dixieme) --- */
 .cours-header {
   text-align: center;
   margin-bottom: 20px;
@@ -126,27 +123,29 @@ body {
   color: #475569;
 }
 
-/* --- Grille des cours (CoursSix) --- */
+/* --- Grille des cours --- */
 .cours-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 cartes par ligne */
+  grid-template-columns: repeat(3, 1fr); /* exactement 3 colonnes */
   gap: 24px;
   margin: 20px 0;
 }
 
-/* --- Carte de cours modernisée --- */
+/* --- Carte de cours --- */
 .cours-card {
   position: relative;
-  background: #ffffff;
+  background: #f9fafb;
   border-radius: 18px;
   padding: 24px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between; /* pousse le bouton en bas */
   align-items: flex-start;
   transition: all 0.3s ease;
   cursor: pointer;
   border: 1px solid #e5e7eb;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+  min-height: 280px; /* uniformisation des cartes */
 }
 
 .cours-card:hover {
@@ -155,8 +154,8 @@ body {
   box-shadow: 0 15px 30px rgba(59, 130, 246, 0.2);
 }
 
-/* Badge icône circulaire */
-.cours-card h1 {
+/* --- Badge icône circulaire --- */
+.cours-card h1.cours-icon {
   font-size: 36px;
   margin-bottom: 16px;
   display: flex;
@@ -165,12 +164,12 @@ body {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #facc15, #f97316); /* jaune-orange */
+  background: linear-gradient(135deg, #facc15, #f97316);
   color: white;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* Titre de la matière */
+/* --- Titre de la matière --- */
 .cours-card h2 {
   font-size: 20px;
   font-weight: 700;
@@ -178,14 +177,35 @@ body {
   color: #0f172a;
 }
 
-/* Description */
+/* --- Description --- */
 .cours-card p {
   font-size: 14px;
   color: #475569;
   line-height: 1.5;
+  flex-grow: 1; /* pousse le bouton en bas */
 }
 
-/* --- Footer message (CoursSix) --- */
+/* --- Bouton "Commencer" dans la carte --- */
+.cours-btn {
+  margin-top: 1rem;
+  padding: 10px 20px;
+  background-color: #2563eb;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  align-self: center;
+  transition: all 0.3s ease;
+}
+
+.cours-btn:hover {
+  background-color: #1e40af;
+  transform: scale(1.05);
+}
+
+/* --- Footer message --- */
 .cours-footer {
   margin-top: 30px;
   text-align: center;
@@ -221,47 +241,9 @@ body {
   padding: 20px;
   border: 1px solid #e2e8f0;
 }
+
 /* --- Icônes Sidebar améliorées --- */
-.nvx-icon {
-  width: 26px;   /* agrandies */
-  height: 26px;
-  flex-shrink: 0;
-  display: inline-block;
-  vertical-align: middle;
-  color: #475569;
-  transition: transform 0.22s ease, color 0.22s ease;
-  stroke-width: 2.2; /* traits plus visibles */
+.nvx-side-item.active .nvx-icon,
+.nvx-link:hover .nvx-icon {
+  transform: scale(1.2);
 }
-
-/* chaque onglet avec sa couleur */
-.nvx-side-item .nvx-icon { color: #64748b; }
-
-.nvx-side-item[data-key="cours"] .nvx-icon { color: #2563eb; }     /* Bleu */
-.nvx-side-item[data-key="pdf"] .nvx-icon { color: #dc2626; }       /* Rouge */
-.nvx-side-item[data-key="formules"] .nvx-icon { color: #16a34a; }  /* Vert */
-.nvx-side-item[data-key="exercice"] .nvx-icon { color: #f59e0b; }  /* Orange */
-.nvx-side-item[data-key="anciens"] .nvx-icon { color: #7c3aed; }   /* Violet */
-.nvx-side-item[data-key="quiz"] .nvx-icon { color: #14b8a6; }      /* Cyan */
-.nvx-side-item[data-key="video"] .nvx-icon { color: #be123c; }     /* Rouge rosé */
-
-/* Hover + actif : accentuation des couleurs + zoom */
-.nvx-side-item:hover[data-key="cours"] .nvx-icon,
-.nvx-side-item.active[data-key="cours"] .nvx-icon { color: #1d4ed8; transform: scale(1.2); }
-
-.nvx-side-item:hover[data-key="pdf"] .nvx-icon,
-.nvx-side-item.active[data-key="pdf"] .nvx-icon { color: #b91c1c; transform: scale(1.2); }
-
-.nvx-side-item:hover[data-key="formules"] .nvx-icon,
-.nvx-side-item.active[data-key="formules"] .nvx-icon { color: #15803d; transform: scale(1.2); }
-
-.nvx-side-item:hover[data-key="exercice"] .nvx-icon,
-.nvx-side-item.active[data-key="exercice"] .nvx-icon { color: #b45309; transform: scale(1.2); }
-
-.nvx-side-item:hover[data-key="anciens"] .nvx-icon,
-.nvx-side-item.active[data-key="anciens"] .nvx-icon { color: #6d28d9; transform: scale(1.2); }
-
-.nvx-side-item:hover[data-key="quiz"] .nvx-icon,
-.nvx-side-item.active[data-key="quiz"] .nvx-icon { color: #0d9488; transform: scale(1.2); }
-
-.nvx-side-item:hover[data-key="video"] .nvx-icon,
-.nvx-side-item.active[data-key="video"] .nvx-icon { color: #9f1239; transform: scale(1.2); }

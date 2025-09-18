@@ -42,7 +42,7 @@ const chapitresGeographie6 = [
 
 export default function Geographie() {
   const [activeChapitre, setActiveChapitre] = useState(null);
-  const imageMatiere = "/image/geographie.jpg"; // image principale
+  const imageMatiere = "/image/geo.jpg"; // image principale
 
   return (
     <div style={{ width: "90%", margin: "0 auto" }}>
@@ -53,7 +53,7 @@ export default function Geographie() {
           alt="Géographie 6ème"
           style={{
             width: "100%",
-            height: "400px",
+            height: "500px",
             objectFit: "cover",
             borderRadius: "12px",
           }}

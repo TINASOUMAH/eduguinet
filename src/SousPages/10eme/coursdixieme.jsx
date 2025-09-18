@@ -1,39 +1,57 @@
-import React, { useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
-    
-export default function Coursdixieme() {
-      
-      const [page,setPage]=useState(true)
-       //je veux une fonction pour reinitialiser cette page
-       const resetPage = () => {
-         setPage(true);
-       };
-       const items=[ { slug: "maths", icon: "➕", label: "Mathématiques", description: "Science des nombres, des formes et des structures." },
-      { slug: "physique", icon: "🧪", label: "Physique", description: "Forces, électricité, énergie et mécanique." },
-      { slug: "chimie", icon: "🧬", label: "Chimie", description: "Composition, structure et propriétés de la matière." },
-      { slug: "francais", icon: "FR", label: "Français", description: "Rédaction, littérature et grammaire approfondie." },
-      { slug: "geographie", icon: "🌍", label: "Géographie", description: "Territoires, climat et ressources." },
-      { slug: "histoire", icon: "📖", label: "Histoire", description: "Étude des événements passés et leur impact." },
-      { slug: "biologie", icon: "🌿", label: "Biologie", description: "Science des êtres vivants et de leur environnement." },
-      { slug: "ecm", icon: "🇬🇧", label: "ECM", description: "Valeurs civiques et éthiques." },
-]
-  return (
-    <div>
-        { page? <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:"10px"}}>
-          {items.map((item) => (
-           <button onClick={()=>setPage(false)} style={{ border: "1px solid #ccc", borderRadius: "8px", padding: "20px", marginBottom: "15px" ,marginRight:"10px"}}>
-              <Link to={item.slug}>
-                 {item.icon} {item.label}
-              </Link>
-         </button>
-       ))}
-        </div>: <main>
-           <Outlet />
-         </main>
-         }
-       </div>
-     )
-   }
-   
-  
+import React, { useState } from "react";
+import { Link, Outlet } from "react-router-dom";
+import "../../style/styleNiveaux.css"; // Assure-toi que le chemin est correct
 
+export default function CoursDixieme() {
+  const [page, setPage] = useState(true);
+
+  const resetPage = () => {
+    setPage(true);
+  };
+
+  const items = [
+    { slug: "Mathematique", icon: "➕", label: "Mathématique", description: "Science des nombres, des formes et des structures, utilisée pour résoudre des problèmes." },
+    { slug: "francais", icon: "📖", label: "Français", description: "Grammaire, orthographe, conjugaison et lecture." },
+    { slug: "geographie", icon: "🌍", label: "Géographie", description: "Découverte des pays, continents et paysages." },
+    { slug: "histoire", icon: "📜", label: "Histoire", description: "Étude des événements passés et de leur impact sur le présent." },
+    { slug: "Physique", icon: "🧪", label: "Physique", description: "Science qui étudie les lois fondamentales de la nature, comme le mouvement et l'énergie." },
+    { slug: "Chimie", icon: "⚖️", label: "Chimie", description: "Étude de la composition, structure, propriétés et transformations de la matière." },
+    { slug: "Biologie", icon: "🧬", label: "Biologie", description: "Étude des êtres vivants et de leur environnement." },
+    { slug: "ECM", icon: "👥", label: "ECM", description: "Éducation civique et morale." },
+  ];
+
+  return (
+    <div className="cours-wrapper">
+      {page ? (
+        <>
+          <header className="cours-header">
+            <h1>Bienvenue en 10ème</h1>
+            <p>👉 Choisis la matière que tu veux réviser.</p>
+          </header>
+
+          <div className="cours-grid">
+            {items.map((item) => (
+              <Link
+                to={item.slug}
+                key={item.slug}
+                onClick={() => setPage(false)}
+                style={{ textDecoration: "none" }}
+              >
+                <div className="cours-card">
+                  <h1 className="cours-icon">{item.icon}</h1>
+                  <h2>{item.label}</h2>
+                  <p>{item.description}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </>
+      ) : (
+        <main>
+          <Outlet />
+          <button className="reset-btn" onClick={resetPage}>⬅ Retour</button>
+        </main>
+      )}
+    </div>
+  );
+}
