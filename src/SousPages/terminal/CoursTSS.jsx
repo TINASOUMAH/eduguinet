@@ -10,14 +10,14 @@ function CoursTSS() {
   };
 
   const items = [
-    { slug: "economiquetss", icon: "💰", label: "Économie", description: "Microéconomie, macroéconomie et commerce international." },
-    { slug: "sociologietss", icon: "👥", label: "Sociologie", description: "Stratification sociale et institutions." },
-    { slug: "psychologietss", icon: "🧠", label: "Psychologie", description: "Psychologie cognitive et sociale." },
-    { slug: "pdftss", icon: "📄", label: "Documents PDF", description: "Ressources et supports de cours en PDF." },
-    { slug: "ancienstss", icon: "📚", label: "Anciens Sujets", description: "Examens et épreuves des années précédentes." },
-    { slug: "formulestss", icon: "📐", label: "Formules", description: "Formulaires et aide-mémoires." },
-    { slug: "quiztss", icon: "🧠", label: "Quiz", description: "Tests et évaluations interactives." },
-    { slug: "exotss", icon: "✏️", label: "Exercices", description: "Exercices pratiques et corrigés." },
+    { slug: "tss/economiquetss", icon: "💰", label: "Économie", description: "Microéconomie, macroéconomie et commerce international." },
+    { slug: "tss/sociologietss", icon: "👥", label: "Philosophie", description: "Stratification sociale et institutions." },
+    { slug: "tss/anglais", icon: "🧠", label: "Anglais", description: "Psychologie cognitive et sociale." },
+    { slug: "tss/français", icon: "📄", label: "Français", description: "Ressources et supports de cours en PDF." },
+    { slug: "tss/histoire", icon: "📚", label: "Histoire", description: "Examens et épreuves des années précédentes." },
+    { slug: "tss/geographie", icon: "📐", label: "Geographie", description: "Formulaires et aide-mémoires." },
+    { slug: "tss/math", icon: "🧠", label: "Math", description: "Tests et évaluations interactives." },
+    
   ];
 
   return (

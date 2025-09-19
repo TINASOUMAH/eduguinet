@@ -1,134 +1,134 @@
 import React, { useState } from 'react';
 
-export default function FormulesMethodesTSM() {
+export default function FormulesMethodesTSE() {
   const [activeTab, setActiveTab] = useState({}); // Track active tab for each subject
 
   const formules = [
     {
       id: 1,
       title: "Mathématiques - Analyse",
-      definition: "Les fonctions, limites, dérivées et intégrales sont les outils fondamentaux de l'analyse mathématique en Terminale.",
+      definition: "Les fonctions, limites, dérivées et intégrales adaptées au programme Sciences Expérimentales.",
       properties: [
         { name: "Limite d'une fonction", example: "lim(x→a) f(x) = L" },
         { name: "Dérivée d'une fonction", example: "f'(x) = lim(h→0) [f(x+h) - f(x)]/h" },
         { name: "Dérivée d'un produit", example: "(uv)' = u'v + uv'" },
-        { name: "Dérivée d'un quotient", example: "(u/v)' = (u'v - uv')/v²" },
+        { name: "Primitive de base", example: "∫ xⁿ dx = xⁿ⁺¹/(n+1) + C" },
         { name: "Intégrale définie", example: "∫[a,b] f(x)dx = F(b) - F(a)" },
-        { name: "Primitive de xⁿ", example: "∫ xⁿ dx = xⁿ⁺¹/(n+1) + C" }
+        { name: "Fonction exponentielle", example: "d/dx(eˣ) = eˣ" }
       ],
       methods: [
         "Identifier le type de fonction et la propriété à appliquer.",
-        "Pour les limites : factoriser, simplifier ou utiliser les formes indéterminées.",
-        "Pour les dérivées : appliquer les règles de dérivation (somme, produit, quotient, composée).",
-        "Pour les intégrales : chercher une primitive ou utiliser l'intégration par parties.",
-        "Vérifier le résultat en dérivant une primitive ou en substituant dans une limite."
+        "Pour les limites : factoriser et simplifier les expressions.",
+        "Pour les dérivées : appliquer les règles de base (somme, produit, quotient).",
+        "Pour les primitives : reconnaître les formes usuelles.",
+        "Vérifier le résultat par dérivation."
       ],
       color: "#3b82f6"
     },
     {
       id: 2,
-      title: "Mathématiques - Géométrie",
-      definition: "La géométrie dans l'espace et les nombres complexes permettent de résoudre des problèmes avancés.",
-      properties: [
-        { name: "Produit scalaire", example: "u⃗ · v⃗ = ||u⃗|| ||v⃗|| cos(θ)" },
-        { name: "Équation de droite", example: "y = mx + p" },
-        { name: "Distance point-droite", example: "d = |ax₀ + by₀ + c|/√(a² + b²)" },
-        { name: "Nombre complexe", example: "z = a + bi, |z| = √(a² + b²)" },
-        { name: "Forme exponentielle", example: "z = r·e^(iθ)" },
-        { name: "Formule d'Euler", example: "e^(iθ) = cos(θ) + i·sin(θ)" }
-      ],
-      methods: [
-        "Pour le produit scalaire : utiliser les coordonnées ou la définition géométrique.",
-        "Pour les droites : déterminer l'équation à partir de deux points ou d'un point et d'un vecteur directeur.",
-        "Pour les nombres complexes : passer entre forme algébrique, trigonométrique et exponentielle.",
-        "Utiliser les propriétés géométriques pour simplifier les calculs.",
-        "Vérifier la cohérence des résultats avec le contexte géométrique."
-      ],
-      color: "#1d4ed8"
-    },
-    {
-      id: 3,
-      title: "Chimie - Thermodynamique",
-      definition: "La thermodynamique étudie les échanges d'énergie et les transformations de la matière.",
-      properties: [
-        { name: "Premier principe", example: "ΔU = Q + W" },
-        { name: "Enthalpie", example: "H = U + PV, ΔH = ΔU + ΔnRT" },
-        { name: "Entropie", example: "ΔS = Q/T (transformation réversible)" },
-        { name: "Énergie libre de Gibbs", example: "G = H - TS, ΔG = ΔH - TΔS" },
-        { name: "Constante d'équilibre", example: "K = e^(-ΔG°/RT)" },
-        { name: "Loi de Van't Hoff", example: "d(ln K)/dT = ΔH°/RT²" }
-      ],
-      methods: [
-        "Identifier le système et ses frontières (ouvert, fermé, isolé).",
-        "Appliquer le premier principe en comptabilisant chaleur et travail.",
-        "Utiliser les fonctions d'état (U, H, S, G) selon les conditions.",
-        "Pour les équilibres : calculer K à partir des concentrations ou pressions partielles.",
-        "Analyser l'influence de la température sur l'équilibre avec Van't Hoff."
-      ],
-      color: "#06b6d4"
-    },
-    {
-      id: 4,
-      title: "Chimie - Cinétique",
-      definition: "La cinétique chimique étudie la vitesse des réactions et les mécanismes réactionnels.",
-      properties: [
-        { name: "Vitesse de réaction", example: "v = -1/a × d[A]/dt = 1/b × d[B]/dt" },
-        { name: "Loi de vitesse", example: "v = k[A]^α[B]^β" },
-        { name: "Ordre de réaction", example: "Ordre global = α + β" },
-        { name: "Loi d'Arrhenius", example: "k = A·e^(-Ea/RT)" },
-        { name: "Temps de demi-vie", example: "t₁/₂ = ln(2)/k (ordre 1)" },
-        { name: "Mécanisme réactionnel", example: "Étape déterminante = étape la plus lente" }
-      ],
-      methods: [
-        "Déterminer l'ordre de réaction par la méthode différentielle ou intégrale.",
-        "Utiliser les concentrations initiales pour trouver la loi de vitesse.",
-        "Appliquer Arrhenius pour calculer l'énergie d'activation.",
-        "Analyser les mécanismes en identifiant l'étape déterminante.",
-        "Utiliser les approximations (pré-équilibre, état quasi-stationnaire)."
-      ],
-      color: "#0891b2"
-    },
-    {
-      id: 5,
       title: "Physique - Mécanique",
-      definition: "La mécanique étudie le mouvement des corps et les forces qui les gouvernent.",
+      definition: "Les lois fondamentales du mouvement et de l'énergie en physique expérimentale.",
       properties: [
         { name: "Deuxième loi de Newton", example: "F⃗ = ma⃗" },
         { name: "Énergie cinétique", example: "Ec = ½mv²" },
-        { name: "Énergie potentielle", example: "Ep = mgh (pesanteur)" },
-        { name: "Théorème de l'énergie cinétique", example: "ΔEc = W(F⃗)" },
+        { name: "Énergie potentielle", example: "Ep = mgh" },
         { name: "Conservation de l'énergie", example: "Em = Ec + Ep = constante" },
-        { name: "Quantité de mouvement", example: "p⃗ = mv⃗, F⃗ = dp⃗/dt" }
+        { name: "Quantité de mouvement", example: "p⃗ = mv⃗" },
+        { name: "Travail d'une force", example: "W = F⃗ · d⃗ = Fd cos(θ)" }
       ],
       methods: [
-        "Faire un bilan des forces appliquées au système.",
-        "Appliquer la deuxième loi de Newton selon les axes choisis.",
+        "Identifier toutes les forces appliquées au système.",
+        "Choisir un référentiel et définir les axes.",
+        "Appliquer la deuxième loi de Newton selon chaque axe.",
         "Utiliser les théorèmes énergétiques pour les problèmes de conservation.",
-        "Pour les oscillations : identifier la force de rappel et appliquer F = -kx.",
-        "Vérifier la cohérence dimensionnelle des résultats."
+        "Vérifier la cohérence des unités et des résultats."
       ],
       color: "#8b5cf6"
     },
     {
-      id: 6,
-      title: "Physique - Électromagnétisme",
-      definition: "L'électromagnétisme décrit les phénomènes électriques et magnétiques et leurs interactions.",
+      id: 3,
+      title: "Physique - Électricité",
+      definition: "Les lois fondamentales des circuits électriques et de l'électromagnétisme.",
       properties: [
         { name: "Loi d'Ohm", example: "U = RI" },
         { name: "Puissance électrique", example: "P = UI = RI² = U²/R" },
-        { name: "Loi de Faraday", example: "ε = -dΦ/dt" },
-        { name: "Force de Lorentz", example: "F⃗ = q(E⃗ + v⃗ × B⃗)" },
-        { name: "Équations de Maxwell", example: "∇ × E⃗ = -∂B⃗/∂t" },
-        { name: "Énergie du champ", example: "u = ½ε₀E² + 1/(2μ₀)B²" }
+        { name: "Loi des mailles", example: "∑U = 0" },
+        { name: "Loi des nœuds", example: "∑I = 0" },
+        { name: "Énergie électrique", example: "W = UIt = Pt" },
+        { name: "Capacité", example: "Q = CU" }
       ],
       methods: [
-        "Analyser le circuit et identifier les éléments (résistances, condensateurs, bobines).",
-        "Appliquer les lois de Kirchhoff pour les nœuds et les mailles.",
-        "Utiliser les lois de l'induction pour les phénomènes variables.",
-        "Pour les ondes : appliquer les équations de Maxwell.",
-        "Calculer les énergies et puissances selon le contexte."
+        "Analyser le circuit et identifier tous les éléments.",
+        "Appliquer les lois de Kirchhoff (nœuds et mailles).",
+        "Utiliser la loi d'Ohm pour chaque résistance.",
+        "Calculer les puissances et énergies selon le contexte.",
+        "Vérifier que la somme des puissances est cohérente."
       ],
-      color: "#7c3aed"
+      color: "#f59e0b"
+    },
+    {
+      id: 4,
+      title: "Chimie - Réactions",
+      definition: "Les réactions chimiques, équilibres et calculs de concentrations.",
+      properties: [
+        { name: "Équilibrage", example: "aA + bB ⇌ cC + dD" },
+        { name: "Constante d'équilibre", example: "K = [C]ᶜ[D]ᵈ/[A]ᵃ[B]ᵇ" },
+        { name: "pH", example: "pH = -log[H₃O⁺]" },
+        { name: "Concentration molaire", example: "C = n/V" },
+        { name: "Loi des gaz parfaits", example: "PV = nRT" },
+        { name: "Vitesse de réaction", example: "v = k[A]ᵅ[B]ᵝ" }
+      ],
+      methods: [
+        "Équilibrer l'équation chimique en respectant la conservation des éléments.",
+        "Identifier les espèces présentes à l'équilibre.",
+        "Calculer les concentrations à partir des quantités de matière.",
+        "Utiliser la constante d'équilibre pour déterminer l'évolution.",
+        "Vérifier la cohérence avec les conditions expérimentales."
+      ],
+      color: "#06b6d4"
+    },
+    {
+      id: 5,
+      title: "Biologie - Génétique",
+      definition: "Les lois de l'hérédité et les mécanismes de transmission des caractères.",
+      properties: [
+        { name: "Lois de Mendel", example: "Ségrégation et assortiment indépendant" },
+        { name: "Fréquence allélique", example: "p + q = 1 (pour 2 allèles)" },
+        { name: "Hardy-Weinberg", example: "p² + 2pq + q² = 1" },
+        { name: "Probabilité génétique", example: "P(AB) = P(A) × P(B)" },
+        { name: "Coefficient de consanguinité", example: "F = ∑(1/2)ⁿ⁺¹" },
+        { name: "Linkage", example: "Fréquence de recombinaison < 50%" }
+      ],
+      methods: [
+        "Identifier les allèles et leur mode de transmission.",
+        "Établir l'échiquier de Punnett pour les croisements simples.",
+        "Calculer les probabilités selon les lois de Mendel.",
+        "Analyser les écarts à l'équilibre de Hardy-Weinberg.",
+        "Interpréter les résultats en termes de sélection ou dérive."
+      ],
+      color: "#10b981"
+    },
+    {
+      id: 6,
+      title: "Biologie - Physiologie",
+      definition: "Les mécanismes physiologiques et les régulations biologiques.",
+      properties: [
+        { name: "Loi de Fick", example: "J = -D(dC/dx)" },
+        { name: "Équation de Nernst", example: "E = E° + (RT/nF)ln(Cox/Cred)" },
+        { name: "Débit cardiaque", example: "Qc = VES × FC" },
+        { name: "Filtration glomérulaire", example: "DFG = Kf × PNet" },
+        { name: "Transport actif", example: "Consommation d'ATP" },
+        { name: "Loi d'Ohm biologique", example: "I = ΔV/R" }
+      ],
+      methods: [
+        "Identifier le processus physiologique étudié.",
+        "Appliquer les lois physiques aux systèmes biologiques.",
+        "Calculer les flux et gradients selon les conditions.",
+        "Analyser les mécanismes de régulation (feedback).",
+        "Interpréter les résultats dans le contexte physiologique."
+      ],
+      color: "#059669"
     }
   ];
 
@@ -146,7 +146,7 @@ export default function FormulesMethodesTSM() {
   return (
     <div style={{ width: '95%', margin: '0 auto', fontFamily: "'Inter', sans-serif", marginTop: '50px' }}>
       <h2 style={{ textAlign: 'center', fontSize: '36px', color: '#1e293b', marginBottom: '50px', fontWeight: '700', letterSpacing: '1px' }}>
-        Formules et Méthodes - Terminale TSM
+        Formules et Méthodes - Terminale TSE
       </h2>
 
       <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '30px' }}>

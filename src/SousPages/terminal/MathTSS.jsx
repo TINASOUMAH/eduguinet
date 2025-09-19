@@ -1,29 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-// Chapitres Activité Numérique - Biologie TSE
+// Chapitres Activité Numérique TSS
 const chapitresNumerique = [
-  { id: 1, title: "Biologie cellulaire", txtFile: "/uploads/text/terminal/tse/biologie/1.txt", color: "#fef3c7" },
-  { id: 2, title: "Génétique moléculaire", txtFile: "/uploads/text/terminal/tse/biologie/2.txt", color: "#fde2e2" },
-  { id: 3, title: "Physiologie humaine", txtFile: "/uploads/text/terminal/tse/biologie/3.txt", color: "#dbeafe" },
-  { id: 4, title: "Biotechnologies", txtFile: "/uploads/text/terminal/tse/biologie/4.txt", color: "#c7d2fe" },
+  { id: 1, title: "Suites numériques", txtFile: "/uploads/text/terminal/tss/1.txt", color: "#fef3c7" },
+  { id: 2, title: "Limites de fonctions", txtFile: "/uploads/text/terminal/tss/2.txt", color: "#dbeafe" },
+  { id: 3, title: "Dérivation", txtFile: "/uploads/text/terminal/tss/3.txt", color: "#f3e8ff" },
+  { id: 4, title: "Fonction exponentielle", txtFile: "/uploads/text/terminal/tss/4.txt", color: "#ecfdf5" },
+  { id: 5, title: "Fonction logarithme", txtFile: "/uploads/text/terminal/tss/5.txt", color: "#fef2f2" },
+  { id: 6, title: "Intégration", txtFile: "/uploads/text/terminal/tss/6.txt", color: "#f0f9ff" },
 ];
 
-// Chapitres Activité Géométrique - Biologie TSE
+// Chapitres Activité Géométrique TSS
 const chapitresGeometrie = [
-  { id: 1, title: "Écologie et environnement", txtFile: "/uploads/text/terminal/tse/biologie/5.txt", color: "#d1fae5" },
-  { id: 2, title: "Évolution et phylogénie", txtFile: "/uploads/text/terminal/tse/biologie/6.txt", color: "#fbcfe8" },
-  { id: 3, title: "Biodiversité marine", txtFile: "/uploads/text/terminal/tse/biologie/7.txt", color: "#bfdbfe" },
-  { id: 4, title: "Écosystèmes terrestres", txtFile: "/uploads/text/terminal/tse/biologie/8.txt", color: "#fef9c3" },
+  { id: 1, title: "Géométrie analytique", txtFile: "/uploads/text/terminal/tss/7.txt", color: "#d1fae5" },
+  { id: 2, title: "Géométrie dans le plan", txtFile: "/uploads/text/terminal/tss/8.txt", color: "#fef9c3" },
+  { id: 3, title: "Transformations", txtFile: "/uploads/text/terminal/tss/9.txt", color: "#bbf7d0" },
+  { id: 4, title: "Probabilités géométriques", txtFile: "/uploads/text/terminal/tss/10.txt", color: "#fde68a" },
+  { id: 5, title: "Statistiques descriptives", txtFile: "/uploads/text/terminal/tss/11.txt", color: "#fcd5ce" },
+  { id: 6, title: "Graphiques et représentations", txtFile: "/uploads/text/terminal/tss/12.txt", color: "#ede9fe" },
 ];
 
-export default function BiologieTSE() {
+export default function MathTSS() {
   const [activeTab, setActiveTab] = useState("numerique");
   const [activeChapitre, setActiveChapitre] = useState(null);
   const [chapContent, setChapContent] = useState("");
 
   const images = {
-    numerique: "/image/terminal_biologie_numerique.jpg",
-    geometrie: "/image/terminal_biologie_geometrie.jpg",
+    numerique: "/image/terminal_numerique.jpg",
+    geometrie: "/image/terminal_geometrie.jpg",
   };
 
   const currentChapitres =
@@ -129,7 +133,7 @@ export default function BiologieTSE() {
           </div>
         </>
       ) : (
-        /* Contenu du chapitre sélectionné */
+        /* Contenu du chapitre sélectionné - SEULEMENT le contenu, pas d'image ni boutons */
         <div style={{ padding: "30px", background: "#f9fafb", borderRadius: "12px", border: "1px solid #e2e8f0", minHeight: "80vh" }}>
           <h1 style={{ marginBottom: "25px", color: "#2563eb", fontSize: "28px", fontWeight: "700" }}>
             {activeChapitre.title}

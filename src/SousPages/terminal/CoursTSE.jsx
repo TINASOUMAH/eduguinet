@@ -10,14 +10,14 @@ function CoursTSE() {
   };
 
   const items = [
-    { slug: "mathtse", icon: "➕", label: "Mathématiques", description: "Analyse avancée et méthodes numériques." },
-    { slug: "physiquetse", icon: "🧪", label: "Physique-Chimie", description: "Physique expérimentale et chimie analytique." },
-    { slug: "biologietse", icon: "🧬", label: "Biologie", description: "Biologie cellulaire et biotechnologies." },
-    { slug: "pdftse", icon: "📄", label: "Documents PDF", description: "Ressources et supports de cours en PDF." },
-    { slug: "ancienstse", icon: "📚", label: "Anciens Sujets", description: "Examens et épreuves des années précédentes." },
-    { slug: "formulestse", icon: "📐", label: "Formules", description: "Formulaires et aide-mémoires." },
-    { slug: "quiztse", icon: "🧠", label: "Quiz", description: "Tests et évaluations interactives." },
-    { slug: "exotse", icon: "✏️", label: "Exercices", description: "Exercices pratiques et corrigés." },
+    { slug: "tse/mathtse", icon: "➕", label: "Mathématiques", description: "Analyse avancée et méthodes numériques." },
+    { slug: "tse/physiquetse", icon: "🧪", label: "Physique-Chimie", description: "Physique expérimentale et chimie analytique." },
+    { slug: "tse/biologietse", icon: "🧬", label: "Biologie", description: "Biologie cellulaire et biotechnologies." },
+    { slug: "tse/pdftse", icon: "📄", label: "Documents PDF", description: "Ressources et supports de cours en PDF." },
+    { slug: "tse/ancienstse", icon: "📚", label: "Anciens Sujets", description: "Examens et épreuves des années précédentes." },
+    { slug: "tse/formulestse", icon: "📐", label: "Formules", description: "Formulaires et aide-mémoires." },
+    { slug: "tse/quiztse", icon: "🧠", label: "Quiz", description: "Tests et évaluations interactives." },
+    { slug: "tse/exotse", icon: "✏️", label: "Exercices", description: "Exercices pratiques et corrigés." },
   ];
 
   return (

@@ -51,22 +51,36 @@ export default function ChapitresPDF() {
   };
 
   return (
-    <div style={{ width: "95%", maxWidth: "1000px", margin: "0 auto" }}>
-      {/* Image principale */}
-      <div style={{ marginBottom: "20px" }}>
-        <img
-          src={imageMatiere}
-          alt="Image matière"
-          style={{ width: "100%", height: "400px", objectFit: "cover", borderRadius: "12px" }}
-        />
-      </div>
-
-      {/* Liste des chapitres */}
-      {!activeChapitre && (
+    <div style={{ width: "90%", margin: "0 auto" }}>
+      {/* Affichage conditionnel : soit l'image + chapitres, soit seulement le contenu */}
+      {!activeChapitre ? (
         <>
-          <h3 style={{ marginBottom: "15px", color: "#334155", fontWeight: "600", textAlign: "center" }}>
+          {/* Image principale */}
+          <div style={{ marginBottom: "20px" }}>
+            <img
+              src={imageMatiere}
+              alt="Calcul 6ème"
+              style={{
+                width: "100%",
+                height: "400px",
+                objectFit: "cover",
+                borderRadius: "12px",
+              }}
+            />
+          </div>
+
+          {/* Liste des chapitres en cartes */}
+          <h3
+            style={{
+              marginBottom: "15px",
+              color: "#334155",
+              fontWeight: "600",
+              textAlign: "center",
+            }}
+          >
             Choisis le chapitre que tu veux réviser...
           </h3>
+
           <div
             style={{
               display: "grid",
@@ -86,43 +100,54 @@ export default function ChapitresPDF() {
                   border: "1px solid #e5e7eb",
                   boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
                   transition: "all 0.3s ease",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  minHeight: "150px",
-                  textAlign: "center",
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-4px) scale(1.02)")}
-                onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0) scale(1)")}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.transform =
+                    "translateY(-4px) scale(1.02)")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.transform = "translateY(0) scale(1)")
+                }
               >
-                <h4 style={{ marginBottom: "10px" }}>CHAPITRE {chap.id}</h4>
-                <h3 style={{ fontSize: "18px", fontWeight: "600" }}>{chap.title}</h3>
+                <h4
+                  style={{
+                    fontSize: "13px",
+                    color: "#64748b",
+                    marginBottom: "6px",
+                  }}
+                >
+                  CHAPITRE {chap.id}
+                </h4>
+                <h3
+                  style={{
+                    fontSize: "18px",
+                    fontWeight: "600",
+                    color: "#0f172a",
+                  }}
+                >
+                  {chap.title}
+                </h3>
               </div>
             ))}
           </div>
         </>
-      )}
-
-      {/* Affichage du PDF */}
-      {activeChapitre && (
+      ) : (
+        /* Contenu du chapitre sélectionné - SEULEMENT le contenu, pas d'image */
         <div
           style={{
-            marginTop: "30px",
             padding: "20px",
-            background: "#ffffff",
+            background: "#f9fafb",
             borderRadius: "12px",
-            border: "1px solid #e5e7eb",
-            boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
-            width: "100%",
-            textAlign: "center",
+            border: "1px solid #e2e8f0",
+            minHeight: "80vh",
           }}
         >
-          <h1 style={{ marginBottom: "20px", color: "#2563eb", fontSize: "26px", fontWeight: "700", textDecoration: "underline" }}>
+          <h2 style={{ marginBottom: "10px", color: "#2563eb", fontSize: "28px" }}>
             {activeChapitre.title}
-          </h1>
-
-          {/* Conteneur scrollable pour PDF */}
-          <div style={{ width: "100%", height: "80vh", overflow: "auto", border: "1px solid #e5e7eb", padding: "10px" }}>
+          </h2>
+          
+          {/* Affichage du PDF */}
+          <div style={{ textAlign: "center", marginTop: "20px" }}>
             <Document
               key={activeChapitre?.id}
               file={activeChapitre ? resolvePublicUrl(activeChapitre.pdfFile) : null}

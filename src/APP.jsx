@@ -33,10 +33,10 @@ import TerminalVideo from "./pages/TerminalVideo";
 // Terminale TSM Components
 import PdfTSM from "./SousPages/terminal/tsm/pdftsm";
 import VideoTSM from "./SousPages/terminal/tsm/video";
-import AnciensujetTSM from "./SousPages/terminal/tsm/ancienstsm";
 import FormuleTSM from "./SousPages/terminal/tsm/formulestsm";
 import QuizTSM from "./SousPages/terminal/tsm/quiztsm";
-import ExerciceTSM from "./SousPages/terminal/tsm/exotsm";
+import ExercicesTSM from "./SousPages/terminal/tsm/exercicestsm";
+import AnciensSujetsTSM from "./SousPages/terminal/tsm/anciensujetstsm";
 import MathTSM from "./SousPages/terminal/tsm/mathtsm";
 import ChimieTSM from "./SousPages/terminal/tsm/chimietsm";
 
@@ -46,9 +46,13 @@ import PhysiqueTSE from "./SousPages/terminal/tes/PhysiqueTSE";
 import BiologieTSE from "./SousPages/terminal/tes/BiologieTSE";
 
 // Terminale TSS Components
-import EconomiqueTSS from "./SousPages/terminal/tss/EconomiqueTSS";
-import SociologieTSS from "./SousPages/terminal/tss/SociologieTSS";
-import PsychologieTSS from "./SousPages/terminal/tss/PsychologieTSS";
+import EconomiqueTSS from "./SousPages/terminal/EconomiqueTSS";
+import PhilosophieTSS from "./SousPages/terminal/PhilosophieTSS";
+import AnglaisTSS from "./SousPages/terminal/AnglaisTSS";
+import FrancaisTSS from "./SousPages/terminal/FrancaisTSS";
+import HistoireTSS from "./SousPages/terminal/HistoireTSS";
+import GeographieTSS from "./SousPages/terminal/GeographieTSS";
+import MathTSS from "./SousPages/terminal/MathTSS";
 
 // Matières communes Terminale
 import FrancaisTer from "./SousPages/terminal/FrancaisTer";
@@ -165,7 +169,6 @@ export default function App() {
               </Route>
               <Route index element={<Navigate to="/dixiemepage/cours" replace />} />
               <Route path="pdf" element={<Pdfdix />} />
-                 <Route path="video" element={<Videodix/>} />
                  <Route path="anciens" element={<Anciensujetdix />} />
                  <Route path="formules" element={<Formuledix />} />
                  <Route path="quiz" element={<Quizdix/>} />
@@ -173,61 +176,41 @@ export default function App() {
             </Route>
             {/* Terminale */}
             <Route path="/niveaux/Terminale" element={<Terminalpage />}>
-              <Route index element={<Terminales />} />
-              
-              {/* Routes TSM */}
-              <Route path="tsm" element={<TerminaleTSM />}>
-                <Route path="mathtsm" element={<MathTSM />} />
-                <Route path="chimietsm" element={<ChimieTSM />} />
-                <Route path="francaistsm" element={<FrancaisTer />} />
-                <Route path="philosophietsm" element={<PhilosophieTer />} />
-                <Route path="histoiretsm" element={<HistoireTer />} />
-                <Route path="anglaistsm" element={<AnglaisTer />} />
-                <Route path="pdftsm" element={<PdfTSM />} />
-                <Route path="ancienstsm" element={<AnciensujetTSM />} />
-                <Route path="formulestsm" element={<FormuleTSM />} />
-                <Route path="quiztsm" element={<QuizTSM />} />
-                <Route path="exotsm" element={<ExerciceTSM />} />
+              <Route path="cours" element={<Terminales />}>
+                {/* Routes TSM */}
+                <Route path="tsm/mathtsm" element={<MathTSM />} />
+                <Route path="tsm/chimietsm" element={<ChimieTSM />} />
+                <Route path="tsm/francaistsm" element={<FrancaisTer />} />
+                <Route path="tsm/philosophietsm" element={<PhilosophieTer />} />
+                <Route path="tsm/histoiretsm" element={<HistoireTer />} />
+                <Route path="tsm/anglaistsm" element={<AnglaisTer />} />
+                
+                {/* Routes TSE */}
+                <Route path="tse/mathtse" element={<MathTSE />} />
+                <Route path="tse/physiquetse" element={<PhysiqueTSE />} />
+                <Route path="tse/biologietse" element={<BiologieTSE />} />
+                <Route path="tse/francaistse" element={<FrancaisTer />} />
+                <Route path="tse/philosophietse" element={<PhilosophieTer />} />
+                <Route path="tse/histoiretse" element={<HistoireTer />} />
+                <Route path="tse/anglaistse" element={<AnglaisTer />} />
+                
+                {/* Routes TSS */}
+                <Route path="tss/economiquetss" element={<EconomiqueTSS />} />
+                <Route path="tss/sociologietss" element={<PhilosophieTSS />} />
+                <Route path="tss/anglais" element={<AnglaisTSS />} />
+                <Route path="tss/français" element={<FrancaisTSS />} />
+                <Route path="tss/histoire" element={<HistoireTSS />} />
+                <Route path="tss/geographie" element={<GeographieTSS />} />
+                <Route path="tss/math" element={<MathTSS />} />
               </Route>
               
-              {/* Routes TSE */}
-              <Route path="tse" element={<TerminaleTSE />}>
-                <Route path="mathtse" element={<MathTSE />} />
-                <Route path="physiquetse" element={<PhysiqueTSE />} />
-                <Route path="biologietse" element={<BiologieTSE />} />
-                <Route path="francaistse" element={<FrancaisTer />} />
-                <Route path="philosophietse" element={<PhilosophieTer />} />
-                <Route path="histoiretse" element={<HistoireTer />} />
-                <Route path="anglaistse" element={<AnglaisTer />} />
-                <Route path="pdftse" element={<PdfTSM />} />
-                <Route path="ancienstse" element={<AnciensujetTSM />} />
-                <Route path="formulestse" element={<FormuleTSM />} />
-                <Route path="quiztse" element={<QuizTSM />} />
-                <Route path="exotse" element={<ExerciceTSM />} />
-              </Route>
-              
-              {/* Routes TSS */}
-              <Route path="tss" element={<TerminaleTSS />}>
-                <Route path="economiquetss" element={<EconomiqueTSS />} />
-                <Route path="sociologietss" element={<SociologieTSS />} />
-                <Route path="psychologietss" element={<PsychologieTSS />} />
-                <Route path="francaistss" element={<FrancaisTer />} />
-                <Route path="philosophietss" element={<PhilosophieTer />} />
-                <Route path="histoiretss" element={<HistoireTer />} />
-                <Route path="anglaistss" element={<AnglaisTer />} />
-                <Route path="pdftss" element={<PdfTSM />} />
-                <Route path="ancienstss" element={<AnciensujetTSM />} />
-                <Route path="formulestss" element={<FormuleTSM />} />
-                <Route path="quiztss" element={<QuizTSM />} />
-                <Route path="exotss" element={<ExerciceTSM />} />
-              </Route>
-              
-              <Route path="pdf" element={<TerminalPdf />} />
-              <Route path="formules" element={<TerminalFormules />} />
-              <Route path="exercices" element={<TerminalExercices />} />
-              <Route path="anciens" element={<TerminalAnciens />} />
-              <Route path="quiz" element={<TerminalQuiz />} />
-              <Route path="video" element={<TerminalVideo />} />
+              <Route index element={<Navigate to="/niveaux/Terminale/cours" replace />} />
+              <Route path="pdf" element={<PdfTSM />} />
+              <Route path="video" element={<VideoTSM />} />
+              <Route path="anciens" element={<AnciensSujetsTSM />} />
+              <Route path="formules" element={<FormuleTSM />} />
+              <Route path="quiz" element={<QuizTSM />} />
+              <Route path="exercices" element={<ExercicesTSM />} />
             </Route>
 
            

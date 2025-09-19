@@ -10,13 +10,13 @@ function CoursTSM() {
   };
 
   const items = [
-    { slug: "mathtsm", icon: "➕", label: "Mathématiques", description: "Analyse, algèbre et fonctions avancées." },
-    { slug: "chimietsm", icon: "🧪", label: "Chimie", description: "Chimie organique et inorganique." },
-    { slug: "francaistsm", icon: "📚", label: "Français", description: "Littérature, dissertation et commentaire composé." },
-    { slug: "philosophietsm", icon: "🤔", label: "Philosophie", description: "Conscience, morale et réflexion critique." },
-    
-    { slug: "anglaistsm", icon: "🇬🇧", label: "Anglais", description: "Expression écrite et orale, civilisation anglophone." },
-    
+    { slug: "tsm/mathtsm", icon: "➕", label: "Mathématiques", description: "Analyse, algèbre linéaire, probabilités et statistiques." },
+    { slug: "tsm/chimietsm", icon: "🧪", label: "Chimie", description: "Chimie organique, inorganique et analytique avancée." },
+    { slug: "tsm/francaistsm", icon: "📚", label: "Français", description: "Littérature, dissertation et commentaire composé." },
+    { slug: "tsm/philosophietsm", icon: "🤔", label: "Philosophie", description: "Métaphysique, épistémologie et philosophie morale." },
+    { slug: "tsm/anglaistsm", icon: "🇬🇧", label: "Anglais", description:  "Compréhension écrite et orale, expression, vocabulaire et grammaire." },
+    { slug: "tsm/physiquetsm", icon: "⚛️", label: "Physique", description: "Mécanique, thermodynamique et électromagnétisme." },
+    { slug: "tsm/economie", icon: "💰", label: "Économie", description: "Microéconomie, macroéconomie et économie du développement." },
   ];
 
   return (
@@ -48,9 +48,9 @@ function CoursTSM() {
           </div>
         </>
       ) : (
-        <main style={{ width: "100%", minHeight: "100vh" }}>
-          <button className="reset-btn" onClick={resetPage} style={{ marginBottom: "20px" }}>⬅ Retour</button>
+        <main>
           <Outlet />
+          <button className="reset-btn" onClick={resetPage}>⬅ Retour</button>
         </main>
       )}
     </div>

@@ -1,52 +1,18 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-// Chapitres de Mathématiques TSM
-const chapitresMathTSM = [
-  {
-    id: 1,
-    title: "Analyse - Fonctions",
-    contenu:
-      "Étude des fonctions, limites, dérivées et primitives. Applications aux fonctions exponentielles et logarithmiques.",
-    color: "#fef3c7",
-  },
-  {
-    id: 2,
-    title: "Algèbre linéaire",
-    contenu:
-      "Matrices, déterminants, systèmes d'équations linéaires et espaces vectoriels.",
-    color: "#fde2e2",
-  },
-  {
-    id: 3,
-    title: "Géométrie analytique",
-    contenu:
-      "Géométrie dans l'espace, équations de droites et de plans, produit scalaire et vectoriel.",
-    color: "#d1fae5",
-  },
-  {
-    id: 4,
-    title: "Probabilités et statistiques",
-    contenu:
-      "Calcul des probabilités, variables aléatoires, lois de probabilité et statistiques descriptives.",
-    color: "#dbeafe",
-  },
-  {
-    id: 5,
-    title: "Suites et séries",
-    contenu:
-      "Suites arithmétiques et géométriques, convergence, séries numériques et applications.",
-    color: "#fbcfe8",
-  },
-  {
-    id: 6,
-    title: "Équations différentielles",
-    contenu:
-      "Résolution d'équations différentielles du premier et second ordre, applications physiques.",
-    color: "#c7d2fe",
-  },
+const chapitresEcoTSS = [
+  { id: 1, title: "Les agents économiques", color: "#fef3c7", content: "Contenu du chapitre sur les agents économiques..." },
+  { id: 2, title: "Le marché et les prix", color: "#dbeafe", content: "Contenu du chapitre sur le marché et les prix..." },
+  { id: 3, title: "La production", color: "#f3e8ff", content: "Contenu du chapitre sur la production..." },
+  { id: 4, title: "La consommation", color: "#ecfdf5", content: "Contenu du chapitre sur la consommation..." },
+  { id: 5, title: "L'épargne et l'investissement", color: "#fef2f2", content: "Contenu du chapitre sur l'épargne et l'investissement..." },
+  { id: 6, title: "La monnaie et le crédit", color: "#f0f9ff", content: "Contenu du chapitre sur la monnaie et le crédit..." },
+  { id: 7, title: "Les échanges internationaux", color: "#fffbeb", content: "Contenu du chapitre sur les échanges internationaux..." },
+  { id: 8, title: "Le développement économique", color: "#f0fdf4", content: "Contenu du chapitre sur le développement économique..." },
+  { id: 9, title: "Les politiques économiques", color: "#fdf4ff", content: "Contenu du chapitre sur les politiques économiques..." }
 ];
 
-export default function TerminaleTSM() {
+export default function EconomiqueTSS() {
   const [activeChapitre, setActiveChapitre] = useState(null);
   const imageMatiere = "/image/dixmath.jpg";
 
@@ -59,7 +25,7 @@ export default function TerminaleTSM() {
           <div style={{ marginBottom: "20px" }}>
             <img
               src={imageMatiere}
-              alt="Mathématiques TSM"
+              alt="Économie TSS"
               style={{
                 width: "100%",
                 height: "400px",
@@ -88,7 +54,7 @@ export default function TerminaleTSM() {
               gap: "20px",
             }}
           >
-            {chapitresMathTSM.map((chap) => (
+            {chapitresEcoTSS.map((chap) => (
               <div
                 key={chap.id}
                 onClick={() => setActiveChapitre(chap)}
@@ -160,24 +126,45 @@ export default function TerminaleTSM() {
             minHeight: "80vh",
           }}
         >
-          <h2 style={{ marginBottom: "10px", color: "#2563eb", fontSize: "28px" }}>
-            {activeChapitre.title}
+          <h2
+            style={{
+              fontSize: "24px",
+              fontWeight: "700",
+              color: "#1e293b",
+              marginBottom: "20px",
+            }}
+          >
+            Chapitre {activeChapitre.id}: {activeChapitre.title}
           </h2>
-          <p style={{ color: "#475569", fontSize: "16px", lineHeight: "1.6" }}>
-            {activeChapitre.contenu}
-          </p>
-          
-          {/* Boutons de navigation */}
-          <div style={{ display: "flex", justifyContent: "center", gap: "15px", marginTop: "25px" }}>
+          <div
+            style={{
+              fontSize: "16px",
+              lineHeight: "1.6",
+              color: "#475569",
+            }}
+          >
+            {activeChapitre.content}
+          </div>
+
+          {/* Boutons de navigation en bas */}
+          <div
+            style={{
+              marginTop: "40px",
+              display: "flex",
+              gap: "15px",
+              justifyContent: "center",
+            }}
+          >
             <button
               onClick={() => setActiveChapitre(null)}
               style={{
-                padding: "12px 20px",
+                padding: "12px 24px",
                 borderRadius: "8px",
-                background: "#2563eb",
+                background: "#3b82f6",
                 color: "#fff",
                 border: "none",
                 cursor: "pointer",
+                fontSize: "16px",
               }}
             >
               ← Retour aux chapitres
@@ -185,12 +172,13 @@ export default function TerminaleTSM() {
             <button
               onClick={() => window.history.back()}
               style={{
-                padding: "12px 20px",
+                padding: "12px 24px",
                 borderRadius: "8px",
                 background: "#059669",
                 color: "#fff",
                 border: "none",
                 cursor: "pointer",
+                fontSize: "16px",
               }}
             >
               ← Retour aux matières
@@ -201,4 +189,3 @@ export default function TerminaleTSM() {
     </div>
   );
 }
-

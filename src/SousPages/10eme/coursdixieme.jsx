@@ -31,18 +31,18 @@ export default function CoursDixieme() {
 
           <div className="cours-grid">
             {items.map((item) => (
-              <Link
-                to={item.slug}
-                key={item.slug}
-                onClick={() => setPage(false)}
-                style={{ textDecoration: "none" }}
-              >
-                <div className="cours-card">
-                  <h1 className="cours-icon">{item.icon}</h1>
-                  <h2>{item.label}</h2>
-                  <p>{item.description}</p>
-                </div>
-              </Link>
+              <div key={item.slug} className="cours-card">
+                <h1 className="cours-icon">{item.icon}</h1>
+                <h2>{item.label}</h2>
+                <p>{item.description}</p>
+
+                {/* Bouton en bas de la carte */}
+                <Link to={item.slug}>
+                  <button className="cours-btn" onClick={() => setPage(false)}>
+                    Acceder
+                  </button>
+                </Link>
+              </div>
             ))}
           </div>
         </>

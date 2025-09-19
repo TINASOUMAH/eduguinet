@@ -1,134 +1,134 @@
 import React, { useState } from 'react';
 
-export default function FormulesMethodesTSM() {
+export default function FormulesMethodesTSS() {
   const [activeTab, setActiveTab] = useState({}); // Track active tab for each subject
 
   const formules = [
     {
       id: 1,
-      title: "Mathématiques - Analyse",
-      definition: "Les fonctions, limites, dérivées et intégrales sont les outils fondamentaux de l'analyse mathématique en Terminale.",
+      title: "Économie - Microéconomie",
+      definition: "Les mécanismes de base du comportement des agents économiques individuels et des marchés.",
       properties: [
-        { name: "Limite d'une fonction", example: "lim(x→a) f(x) = L" },
-        { name: "Dérivée d'une fonction", example: "f'(x) = lim(h→0) [f(x+h) - f(x)]/h" },
-        { name: "Dérivée d'un produit", example: "(uv)' = u'v + uv'" },
-        { name: "Dérivée d'un quotient", example: "(u/v)' = (u'v - uv')/v²" },
-        { name: "Intégrale définie", example: "∫[a,b] f(x)dx = F(b) - F(a)" },
-        { name: "Primitive de xⁿ", example: "∫ xⁿ dx = xⁿ⁺¹/(n+1) + C" }
+        { name: "Élasticité-prix", example: "ε = (ΔQ/Q) / (ΔP/P)" },
+        { name: "Utilité marginale", example: "Um = ΔU/ΔQ" },
+        { name: "Coût marginal", example: "Cm = ΔCT/ΔQ" },
+        { name: "Recette marginale", example: "Rm = ΔRT/ΔQ" },
+        { name: "Profit", example: "π = RT - CT" },
+        { name: "Équilibre du marché", example: "Qd = Qo" }
       ],
       methods: [
-        "Identifier le type de fonction et la propriété à appliquer.",
-        "Pour les limites : factoriser, simplifier ou utiliser les formes indéterminées.",
-        "Pour les dérivées : appliquer les règles de dérivation (somme, produit, quotient, composée).",
-        "Pour les intégrales : chercher une primitive ou utiliser l'intégration par parties.",
-        "Vérifier le résultat en dérivant une primitive ou en substituant dans une limite."
+        "Identifier les variables économiques pertinentes (prix, quantité, coût).",
+        "Analyser les relations de cause à effet entre les variables.",
+        "Calculer les élasticités pour mesurer la sensibilité.",
+        "Déterminer l'équilibre en égalisant l'offre et la demande.",
+        "Interpréter les résultats dans le contexte économique."
       ],
-      color: "#3b82f6"
+      color: "#f59e0b"
     },
     {
       id: 2,
-      title: "Mathématiques - Géométrie",
-      definition: "La géométrie dans l'espace et les nombres complexes permettent de résoudre des problèmes avancés.",
+      title: "Économie - Macroéconomie",
+      definition: "L'analyse des agrégats économiques et des politiques économiques nationales.",
       properties: [
-        { name: "Produit scalaire", example: "u⃗ · v⃗ = ||u⃗|| ||v⃗|| cos(θ)" },
-        { name: "Équation de droite", example: "y = mx + p" },
-        { name: "Distance point-droite", example: "d = |ax₀ + by₀ + c|/√(a² + b²)" },
-        { name: "Nombre complexe", example: "z = a + bi, |z| = √(a² + b²)" },
-        { name: "Forme exponentielle", example: "z = r·e^(iθ)" },
-        { name: "Formule d'Euler", example: "e^(iθ) = cos(θ) + i·sin(θ)" }
+        { name: "PIB", example: "PIB = C + I + G + (X - M)" },
+        { name: "Multiplicateur", example: "k = 1/(1-c)" },
+        { name: "Taux de croissance", example: "g = (PIBt - PIBt-1)/PIBt-1 × 100" },
+        { name: "Taux de chômage", example: "u = (Chômeurs/Population active) × 100" },
+        { name: "Inflation", example: "π = (Pt - Pt-1)/Pt-1 × 100" },
+        { name: "Balance commerciale", example: "BC = Exportations - Importations" }
       ],
       methods: [
-        "Pour le produit scalaire : utiliser les coordonnées ou la définition géométrique.",
-        "Pour les droites : déterminer l'équation à partir de deux points ou d'un point et d'un vecteur directeur.",
-        "Pour les nombres complexes : passer entre forme algébrique, trigonométrique et exponentielle.",
-        "Utiliser les propriétés géométriques pour simplifier les calculs.",
-        "Vérifier la cohérence des résultats avec le contexte géométrique."
+        "Identifier les composantes du PIB selon l'approche choisie.",
+        "Calculer les taux de variation pour mesurer l'évolution.",
+        "Analyser les relations entre les agrégats macroéconomiques.",
+        "Évaluer l'impact des politiques économiques.",
+        "Interpréter les indicateurs dans le contexte conjoncturel."
       ],
-      color: "#1d4ed8"
+      color: "#d97706"
     },
     {
       id: 3,
-      title: "Chimie - Thermodynamique",
-      definition: "La thermodynamique étudie les échanges d'énergie et les transformations de la matière.",
+      title: "Sociologie - Statistiques sociales",
+      definition: "Les méthodes quantitatives pour analyser les phénomènes sociaux et démographiques.",
       properties: [
-        { name: "Premier principe", example: "ΔU = Q + W" },
-        { name: "Enthalpie", example: "H = U + PV, ΔH = ΔU + ΔnRT" },
-        { name: "Entropie", example: "ΔS = Q/T (transformation réversible)" },
-        { name: "Énergie libre de Gibbs", example: "G = H - TS, ΔG = ΔH - TΔS" },
-        { name: "Constante d'équilibre", example: "K = e^(-ΔG°/RT)" },
-        { name: "Loi de Van't Hoff", example: "d(ln K)/dT = ΔH°/RT²" }
+        { name: "Taux de natalité", example: "TN = (Naissances/Population) × 1000" },
+        { name: "Taux de mortalité", example: "TM = (Décès/Population) × 1000" },
+        { name: "Indice de fécondité", example: "ISF = Σ(Taux par âge × 5)" },
+        { name: "Coefficient de corrélation", example: "r = Cov(X,Y)/(σx × σy)" },
+        { name: "Indice de Gini", example: "G = (A/(A+B)) où A = aire sous courbe" },
+        { name: "Mobilité sociale", example: "Taux = (Mobiles/Total) × 100" }
       ],
       methods: [
-        "Identifier le système et ses frontières (ouvert, fermé, isolé).",
-        "Appliquer le premier principe en comptabilisant chaleur et travail.",
-        "Utiliser les fonctions d'état (U, H, S, G) selon les conditions.",
-        "Pour les équilibres : calculer K à partir des concentrations ou pressions partielles.",
-        "Analyser l'influence de la température sur l'équilibre avec Van't Hoff."
-      ],
-      color: "#06b6d4"
-    },
-    {
-      id: 4,
-      title: "Chimie - Cinétique",
-      definition: "La cinétique chimique étudie la vitesse des réactions et les mécanismes réactionnels.",
-      properties: [
-        { name: "Vitesse de réaction", example: "v = -1/a × d[A]/dt = 1/b × d[B]/dt" },
-        { name: "Loi de vitesse", example: "v = k[A]^α[B]^β" },
-        { name: "Ordre de réaction", example: "Ordre global = α + β" },
-        { name: "Loi d'Arrhenius", example: "k = A·e^(-Ea/RT)" },
-        { name: "Temps de demi-vie", example: "t₁/₂ = ln(2)/k (ordre 1)" },
-        { name: "Mécanisme réactionnel", example: "Étape déterminante = étape la plus lente" }
-      ],
-      methods: [
-        "Déterminer l'ordre de réaction par la méthode différentielle ou intégrale.",
-        "Utiliser les concentrations initiales pour trouver la loi de vitesse.",
-        "Appliquer Arrhenius pour calculer l'énergie d'activation.",
-        "Analyser les mécanismes en identifiant l'étape déterminante.",
-        "Utiliser les approximations (pré-équilibre, état quasi-stationnaire)."
-      ],
-      color: "#0891b2"
-    },
-    {
-      id: 5,
-      title: "Physique - Mécanique",
-      definition: "La mécanique étudie le mouvement des corps et les forces qui les gouvernent.",
-      properties: [
-        { name: "Deuxième loi de Newton", example: "F⃗ = ma⃗" },
-        { name: "Énergie cinétique", example: "Ec = ½mv²" },
-        { name: "Énergie potentielle", example: "Ep = mgh (pesanteur)" },
-        { name: "Théorème de l'énergie cinétique", example: "ΔEc = W(F⃗)" },
-        { name: "Conservation de l'énergie", example: "Em = Ec + Ep = constante" },
-        { name: "Quantité de mouvement", example: "p⃗ = mv⃗, F⃗ = dp⃗/dt" }
-      ],
-      methods: [
-        "Faire un bilan des forces appliquées au système.",
-        "Appliquer la deuxième loi de Newton selon les axes choisis.",
-        "Utiliser les théorèmes énergétiques pour les problèmes de conservation.",
-        "Pour les oscillations : identifier la force de rappel et appliquer F = -kx.",
-        "Vérifier la cohérence dimensionnelle des résultats."
+        "Collecter et organiser les données sociodémographiques.",
+        "Calculer les taux et indices selon les définitions standardisées.",
+        "Analyser les corrélations entre variables sociales.",
+        "Interpréter les résultats en termes de tendances sociales.",
+        "Contextualiser les données dans leur environnement historique."
       ],
       color: "#8b5cf6"
     },
     {
-      id: 6,
-      title: "Physique - Électromagnétisme",
-      definition: "L'électromagnétisme décrit les phénomènes électriques et magnétiques et leurs interactions.",
+      id: 4,
+      title: "Psychologie - Statistiques",
+      definition: "Les méthodes statistiques appliquées à l'analyse des comportements et processus mentaux.",
       properties: [
-        { name: "Loi d'Ohm", example: "U = RI" },
-        { name: "Puissance électrique", example: "P = UI = RI² = U²/R" },
-        { name: "Loi de Faraday", example: "ε = -dΦ/dt" },
-        { name: "Force de Lorentz", example: "F⃗ = q(E⃗ + v⃗ × B⃗)" },
-        { name: "Équations de Maxwell", example: "∇ × E⃗ = -∂B⃗/∂t" },
-        { name: "Énergie du champ", example: "u = ½ε₀E² + 1/(2μ₀)B²" }
+        { name: "Moyenne", example: "x̄ = Σxi/n" },
+        { name: "Écart-type", example: "σ = √(Σ(xi-x̄)²/n)" },
+        { name: "Test t de Student", example: "t = (x̄-μ)/(s/√n)" },
+        { name: "Coefficient de corrélation", example: "r = Σ(xi-x̄)(yi-ȳ)/√(Σ(xi-x̄)²Σ(yi-ȳ)²)" },
+        { name: "Chi-deux", example: "χ² = Σ(Oi-Ei)²/Ei" },
+        { name: "ANOVA", example: "F = Variance inter/Variance intra" }
       ],
       methods: [
-        "Analyser le circuit et identifier les éléments (résistances, condensateurs, bobines).",
-        "Appliquer les lois de Kirchhoff pour les nœuds et les mailles.",
-        "Utiliser les lois de l'induction pour les phénomènes variables.",
-        "Pour les ondes : appliquer les équations de Maxwell.",
-        "Calculer les énergies et puissances selon le contexte."
+        "Définir clairement les variables et hypothèses de recherche.",
+        "Choisir le test statistique approprié selon le type de données.",
+        "Calculer les statistiques descriptives (moyenne, écart-type).",
+        "Appliquer les tests d'inférence pour valider les hypothèses.",
+        "Interpréter les résultats en termes psychologiques."
       ],
-      color: "#7c3aed"
+      color: "#06b6d4"
+    },
+    {
+      id: 5,
+      title: "Géographie - Démographie",
+      definition: "L'analyse quantitative des populations et de leur répartition spatiale.",
+      properties: [
+        { name: "Densité de population", example: "D = Population/Superficie" },
+        { name: "Taux d'urbanisation", example: "TU = (Pop. urbaine/Pop. totale) × 100" },
+        { name: "Solde migratoire", example: "SM = Immigrations - Émigrations" },
+        { name: "Indice de vieillissement", example: "IV = (Pop. >65 ans/Pop. <20 ans) × 100" },
+        { name: "Taux d'accroissement", example: "TA = (Solde naturel + Solde migratoire)/Pop. × 100" },
+        { name: "Espérance de vie", example: "Calculée par tables de mortalité" }
+      ],
+      methods: [
+        "Collecter les données démographiques par sources officielles.",
+        "Calculer les indicateurs selon les définitions internationales.",
+        "Analyser la répartition spatiale des phénomènes.",
+        "Comparer les évolutions temporelles et spatiales.",
+        "Interpréter les résultats en termes géographiques et sociaux."
+      ],
+      color: "#10b981"
+    },
+    {
+      id: 6,
+      title: "Histoire - Analyse quantitative",
+      definition: "Les méthodes quantitatives pour analyser les phénomènes historiques et leurs évolutions.",
+      properties: [
+        { name: "Taux de variation", example: "TV = ((Vf - Vi)/Vi) × 100" },
+        { name: "Indice base 100", example: "Indice = (Valeur/Valeur de base) × 100" },
+        { name: "Moyenne mobile", example: "MM = (Σ valeurs sur n périodes)/n" },
+        { name: "Coefficient multiplicateur", example: "CM = Valeur finale/Valeur initiale" },
+        { name: "Taux annuel moyen", example: "TAM = (Vf/Vi)^(1/n) - 1" },
+        { name: "Part relative", example: "PR = (Partie/Total) × 100" }
+      ],
+      methods: [
+        "Identifier les sources historiques fiables et quantifiables.",
+        "Organiser les données chronologiquement.",
+        "Calculer les évolutions et tendances sur les périodes étudiées.",
+        "Comparer les phénomènes dans le temps et l'espace.",
+        "Contextualiser les résultats dans leur environnement historique."
+      ],
+      color: "#ef4444"
     }
   ];
 
@@ -146,7 +146,7 @@ export default function FormulesMethodesTSM() {
   return (
     <div style={{ width: '95%', margin: '0 auto', fontFamily: "'Inter', sans-serif", marginTop: '50px' }}>
       <h2 style={{ textAlign: 'center', fontSize: '36px', color: '#1e293b', marginBottom: '50px', fontWeight: '700', letterSpacing: '1px' }}>
-        Formules et Méthodes - Terminale TSM
+        Formules et Méthodes - Terminale TSS
       </h2>
 
       <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '30px' }}>

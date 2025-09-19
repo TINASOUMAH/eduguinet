@@ -47,91 +47,94 @@ export default function ChapitresMath10() {
   return (
     <div style={{ width: "95%", maxWidth: "1000px", margin: "0 auto", textAlign: "center" }}>
       
-      {/* Boutons Activités */}
-      <div style={{ display: "flex", justifyContent: "center", gap: "20px", marginBottom: "20px" }}>
-        <button
-          onClick={() => { setActiveTab("numerique"); setActiveChapitre(null); }}
-          style={{
-            padding: "12px 20px",
-            borderRadius: "8px",
-            border: "none",
-            cursor: "pointer",
-            background: activeTab === "numerique" ? "#2563eb" : "#e5e7eb",
-            color: activeTab === "numerique" ? "#fff" : "#1f2937",
-            fontWeight: "600",
-          }}
-        >
-          Activité Numérique
-        </button>
-        <button
-          onClick={() => { setActiveTab("geometrie"); setActiveChapitre(null); }}
-          style={{
-            padding: "12px 20px",
-            borderRadius: "8px",
-            border: "none",
-            cursor: "pointer",
-            background: activeTab === "geometrie" ? "#2563eb" : "#e5e7eb",
-            color: activeTab === "geometrie" ? "#fff" : "#1f2937",
-            fontWeight: "600",
-          }}
-        >
-          Activité Géométrique
-        </button>
-      </div>
-
-      {/* Image en dessous des boutons */}
-      <div style={{ marginBottom: "30px" }}>
-        <img
-          src={images[activeTab]}
-          alt={activeTab === "numerique" ? "Activité Numérique" : "Activité Géométrique"}
-          style={{
-            width: "100%",
-            height: "570px",
-            objectFit: "cover",
-            borderRadius: "12px",
-          }}
-        />
-      </div>
-
-      {/* Liste chapitres */}
-      {!activeChapitre && (
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "20px" }}>
-          {currentChapitres.map((chap) => (
-            <div
-              key={chap.id}
-              onClick={() => setActiveChapitre(chap)}
+      {/* Affichage conditionnel : soit l'interface complète, soit seulement le contenu */}
+      {!activeChapitre ? (
+        <>
+          {/* Boutons Activités */}
+          <div style={{ display: "flex", justifyContent: "center", gap: "20px", marginBottom: "20px" }}>
+            <button
+              onClick={() => { setActiveTab("numerique"); setActiveChapitre(null); }}
               style={{
+                padding: "12px 20px",
+                borderRadius: "8px",
+                border: "none",
                 cursor: "pointer",
-                padding: "20px",
-                minHeight: "150px", // uniformiser la hauteur
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                borderRadius: "12px",
-                backgroundColor: chap.color,
-                border: "1px solid #e5e7eb",
-                boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
-                transition: "all 0.3s ease",
+                background: activeTab === "numerique" ? "#2563eb" : "#e5e7eb",
+                color: activeTab === "numerique" ? "#fff" : "#1f2937",
+                fontWeight: "600",
               }}
             >
-              <h4 style={{ fontSize: "13px", color: "#64748b", marginBottom: "6px" }}>
-                CHAPITRE {chap.id}
-              </h4>
-              <h3 style={{ fontSize: "18px", fontWeight: "600", color: "#0f172a" }}>
-                {chap.title}
-              </h3>
-            </div>
-          ))}
-        </div>
-      )}
+              Activité Numérique
+            </button>
+            <button
+              onClick={() => { setActiveTab("geometrie"); setActiveChapitre(null); }}
+              style={{
+                padding: "12px 20px",
+                borderRadius: "8px",
+                border: "none",
+                cursor: "pointer",
+                background: activeTab === "geometrie" ? "#2563eb" : "#e5e7eb",
+                color: activeTab === "geometrie" ? "#fff" : "#1f2937",
+                fontWeight: "600",
+              }}
+            >
+              Activité Géométrique
+            </button>
+          </div>
 
-      {/* Contenu chapitre */}
-      {activeChapitre && (
-        <div style={{ marginTop: "30px", padding: "30px", background: "#ffffff", borderRadius: "12px", border: "1px solid #e5e7eb" }}>
-          <h1 style={{ marginBottom: "25px", color: "#2563eb", fontSize: "26px", fontWeight: "700", textDecoration: "underline" }}>
+          {/* Image en dessous des boutons */}
+          <div style={{ marginBottom: "30px" }}>
+            <img
+              src={images[activeTab]}
+              alt={activeTab === "numerique" ? "Activité Numérique" : "Activité Géométrique"}
+              style={{
+                width: "100%",
+                height: "570px",
+                objectFit: "cover",
+                borderRadius: "12px",
+              }}
+            />
+          </div>
+
+          {/* Liste chapitres */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "20px" }}>
+            {currentChapitres.map((chap) => (
+              <div
+                key={chap.id}
+                onClick={() => setActiveChapitre(chap)}
+                style={{
+                  cursor: "pointer",
+                  padding: "20px",
+                  minHeight: "150px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  borderRadius: "12px",
+                  backgroundColor: chap.color,
+                  border: "1px solid #e5e7eb",
+                  boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
+                  transition: "all 0.3s ease",
+                }}
+              >
+                <h4 style={{ fontSize: "13px", color: "#64748b", marginBottom: "6px" }}>
+                  CHAPITRE {chap.id}
+                </h4>
+                <h3 style={{ fontSize: "18px", fontWeight: "600", color: "#0f172a" }}>
+                  {chap.title}
+                </h3>
+              </div>
+            ))}
+          </div>
+        </>
+      ) : (
+        /* Contenu du chapitre sélectionné - SEULEMENT le contenu, pas d'image ni boutons */
+        <div style={{ padding: "30px", background: "#f9fafb", borderRadius: "12px", border: "1px solid #e2e8f0", minHeight: "80vh" }}>
+          <h1 style={{ marginBottom: "25px", color: "#2563eb", fontSize: "28px", fontWeight: "700" }}>
             {activeChapitre.title}
           </h1>
-          <div style={{ textAlign: "justify", lineHeight: "1.9" }}>{renderContent(chapContent)}</div>
+          <div style={{ textAlign: "justify", lineHeight: "1.9", fontSize: "16px", color: "#475569" }}>
+            {renderContent(chapContent)}
+          </div>
           <button
             onClick={() => setActiveChapitre(null)}
             style={{
